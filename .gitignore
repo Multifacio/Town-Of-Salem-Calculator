@@ -1,2 +1,8 @@
 
 TownOfSalemCalculator/nbproject/private/
+
+TownOfSalemCalculator/build/built-jar\.properties
+
+*.class
+
+TownOfSalemCalculator/build/test/results/TEST-townofsalemcalculator\.RoleGroup\.AllRolesNonCovenTest\.xml
