@@ -5,7 +5,7 @@ import static townofsalemcalculator.Comparison.LesserOrEqual;
 import townofsalemcalculator.Conditions.BasicConditions.RoleGroupAmount;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
-import townofsalemcalculator.RoleSelecter;
+import townofsalemcalculator.StartCategory;
 
 /**
  * The Condition that a Role must occur a maximum amount of times. For example that there is at most one Mayor in the game.
@@ -21,7 +21,7 @@ public class MaximumRoleAmount extends RoleGroupAmount {
      * @param role The role that must occur at most amount times in the game
      * @param amount The amount of times role must occur at most in the game
      */
-    public MaximumRoleAmount(List<RoleSelecter> startCategories, Role role, int amount) {
+    public MaximumRoleAmount(List<StartCategory> startCategories, Role role, int amount) {
         super(startCategories, new SingleRoleGroup(role), LesserOrEqual, amount);
     }
     

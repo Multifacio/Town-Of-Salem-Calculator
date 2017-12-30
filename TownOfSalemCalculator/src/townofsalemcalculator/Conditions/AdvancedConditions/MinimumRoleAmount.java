@@ -6,6 +6,7 @@ import townofsalemcalculator.Conditions.BasicConditions.RoleGroupAmount;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 import townofsalemcalculator.RoleSelecter;
+import townofsalemcalculator.StartCategory;
 
 /**
  * The Condition that a Role must occur a minimum amount of times. For example that there exist a Serial Killer in the game.
@@ -21,7 +22,7 @@ public class MinimumRoleAmount extends RoleGroupAmount {
      * @param role The role that must occur at least amount times in the game
      * @param amount The amount of times role must occur at least in the game
      */
-    public MinimumRoleAmount(List<RoleSelecter> startCategories, Role role, int amount) {
+    public MinimumRoleAmount(List<StartCategory> startCategories, Role role, int amount) {
         super(startCategories, new SingleRoleGroup(role), GreaterOrEqual, amount);
     }
     
