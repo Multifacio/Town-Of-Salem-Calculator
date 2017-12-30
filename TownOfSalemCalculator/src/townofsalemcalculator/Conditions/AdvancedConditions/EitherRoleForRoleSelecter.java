@@ -12,14 +12,14 @@ import townofsalemcalculator.RoleSelecter;
  * @version 1.0
  * @since 2017-12-30
  */
-public class EitherRoleForRoleSelector extends RoleGroupAmount {
+public class EitherRoleForRoleSelecter extends RoleGroupAmount {
     
     /**
      * Create an Either Role For Role Selector condition
      * @param roleSelecter The Role Selecter for which it is known to which roleGroup it belongs
      * @param roleGroup The Role Group to which the roleSelecter belongs
      */
-    public EitherRoleForRoleSelector(RoleSelecter roleSelecter, RoleGroup roleGroup) {
+    public EitherRoleForRoleSelecter(RoleSelecter roleSelecter, RoleGroup roleGroup) {
         super(Collections.singletonList(roleSelecter), roleGroup, Equal, 1);
     }
     

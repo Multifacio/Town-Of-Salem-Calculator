@@ -21,12 +21,12 @@ public final class EveryoneExactly1Role extends CompositeCondition {
     public EveryoneExactly1Role(List<Player> players, List<StartCategory> startCategories) {
         //Set the exactly 1 role condition for all Players
         for(Player p : players) {
-            addCondition(new EitherRoleForRoleSelector(p, new AllRoles()));
+            addCondition(new EitherRoleForRoleSelecter(p, new AllRoles()));
         }
         
         //Set the exactly 1 role condition for all Start Categories
         for(StartCategory sc : startCategories) {
-            addCondition(new EitherRoleForRoleSelector(sc, new AllRoles()));
+            addCondition(new EitherRoleForRoleSelecter(sc, new AllRoles()));
         }
     }
 }
