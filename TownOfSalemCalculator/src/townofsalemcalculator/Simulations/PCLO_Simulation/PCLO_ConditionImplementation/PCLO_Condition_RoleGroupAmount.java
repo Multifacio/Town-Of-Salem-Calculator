@@ -33,7 +33,7 @@ public class PCLO_Condition_RoleGroupAmount implements PCLO_ConditionImplementat
     public void addHoldCondition(LPWizard lpw, Counter counter, int conditionNumber) {
         if (comparison != GreaterOrEqual) {
             //This constraint will be added in case the comparison is greater or equal or in case the comparison is equal
-            LPWizardConstraint con = lpw.addConstraint("Constraint" + counter.getCounterValue(), roleSelecters.size(), ">=");
+            LPWizardConstraint con = lpw.addConstraint("Constraint" + counter.getCounterValue(), (double) roleSelecters.size(), ">=");
             counter.increment();
             for (RoleSelecter rs : roleSelecters) {
                 for (Role r : roleGroup.getRoles()) {
@@ -45,7 +45,7 @@ public class PCLO_Condition_RoleGroupAmount implements PCLO_ConditionImplementat
         
         if (comparison != LesserOrEqual) {
             //This constraint will be added in case the comparison is smaller or equal or in case the comparison is equal
-            LPWizardConstraint con = lpw.addConstraint("Constraint" + counter.getCounterValue(), 0, "<=");
+            LPWizardConstraint con = lpw.addConstraint("Constraint" + counter.getCounterValue(), 0.0, "<=");
             counter.increment();
             for (RoleSelecter rs : roleSelecters) {
                 for (Role r : roleGroup.getRoles()) {
@@ -58,7 +58,7 @@ public class PCLO_Condition_RoleGroupAmount implements PCLO_ConditionImplementat
 
     @Override
     public void setCheckCondition(LPWizard lpw, Counter counter) {
-        LPWizardConstraint con = lpw.addConstraint("Constraint" + counter.getCounterValue(), amount, comparison.getOppositeComparison().getComparisonOperator());
+        LPWizardConstraint con = lpw.addConstraint("Constraint" + counter.getCounterValue(), (double) amount, comparison.getOppositeComparison().getComparisonOperator());
         counter.increment();
         for (RoleSelecter rs : roleSelecters) {
             for (Role r : roleGroup.getRoles()) {
