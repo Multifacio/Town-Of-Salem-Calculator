@@ -2,8 +2,11 @@ package townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplemen
 
 import java.util.List;
 import scpsolver.problems.LPWizard;
+import scpsolver.problems.LPWizardConstraint;
 import townofsalemcalculator.Comparison;
+import static townofsalemcalculator.Comparison.*;
 import townofsalemcalculator.Counter;
+import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.RoleGroup;
 import townofsalemcalculator.RoleSelecter;
 
@@ -28,12 +31,40 @@ public class PCLO_Condition_RoleGroupAmount implements PCLO_ConditionImplementat
 
     @Override
     public void addHoldCondition(LPWizard lpw, Counter counter, int conditionNumber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (comparison != GreaterOrEqual) {
+            //This constraint will be added in case the comparison is greater or equal or in case the comparison is equal
+            LPWizardConstraint con = lpw.addConstraint("Constraint" + counter.getCounterValue(), roleSelecters.size(), ">=");
+            counter.increment();
+            for (RoleSelecter rs : roleSelecters) {
+                for (Role r : roleGroup.getRoles()) {
+                    con.plus("RS" + rs.getId() + "R" + r.toString(), 1.0);
+                }
+            }
+            con.plus("Condition" + conditionNumber, (double) (roleSelecters.size() - amount));
+        }
+        
+        if (comparison != LesserOrEqual) {
+            //This constraint will be added in case the comparison is smaller or equal or in case the comparison is equal
+            LPWizardConstraint con = lpw.addConstraint("Constraint" + counter.getCounterValue(), 0, "<=");
+            counter.increment();
+            for (RoleSelecter rs : roleSelecters) {
+                for (Role r : roleGroup.getRoles()) {
+                    con.plus("RS" + rs.getId() + "R" + r.toString(), 1.0);
+                }
+            }
+            con.plus("Condition" + conditionNumber, (double) (amount * -1));
+        }
     }
 
     @Override
     public void setCheckCondition(LPWizard lpw, Counter counter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        LPWizardConstraint con = lpw.addConstraint("Constraint" + counter.getCounterValue(), amount, comparison.getOppositeComparison().getComparisonOperator());
+        counter.increment();
+        for (RoleSelecter rs : roleSelecters) {
+            for (Role r : roleGroup.getRoles()) {
+                con.plus("RS" + rs.getId() + "R" + r.toString(), 1.0);
+            }
+        }
     }
 
 }

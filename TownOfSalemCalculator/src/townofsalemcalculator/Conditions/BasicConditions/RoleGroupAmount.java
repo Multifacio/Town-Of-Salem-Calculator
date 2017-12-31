@@ -5,6 +5,8 @@ import townofsalemcalculator.Comparison;
 import townofsalemcalculator.Conditions.Condition;
 import townofsalemcalculator.RoleGroup.RoleGroup;
 import townofsalemcalculator.RoleSelecter;
+import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_ConditionImplementation;
+import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_Condition_RoleGroupAmount;
 
 /**
  * A Role Group Amount is a condition that in a list of Role Selecters a certain Role Group must occur a given (minimum/maximum) amount of times.
@@ -31,5 +33,10 @@ public class RoleGroupAmount implements Condition {
         this.roleGroup = roleGroup;
         this.comparison = comparison;
         this.amount = amount;
+    }
+
+    @Override
+    public PCLO_ConditionImplementation getPCLO_Implementation() {
+        return new PCLO_Condition_RoleGroupAmount(roleSelecters, roleGroup, comparison, amount);
     }
 }
