@@ -10,7 +10,7 @@ import townofsalemcalculator.RoleSelecter;
  * @version 1.0
  * @since 2017-12-30
  */
-public class RoleRoleDependency {
+public class RoleRoleDependency implements Condition {
     private final List<RoleSelecter> startCategories; //The list of all Start Categories in a game
     private final Role dependentRole; //The role that cannot exist if the influenceRole does not exist
     private final Role influenceRole; //The role that must exist in order for the dependentRole to exist
