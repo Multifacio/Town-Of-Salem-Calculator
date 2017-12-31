@@ -3,6 +3,8 @@ package townofsalemcalculator.Conditions.BasicConditions;
 import java.util.List;
 import townofsalemcalculator.Conditions.Condition;
 import townofsalemcalculator.Player;
+import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_ConditionImplementation;
+import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_Condition_StartCategoriesToPlayers;
 import townofsalemcalculator.StartCategory;
 
 /**
@@ -23,5 +25,10 @@ public class StartCategoriesToPlayers implements Condition {
     public StartCategoriesToPlayers(List<Player> players, List<StartCategory> startCategories) {
         this.players = players;
         this.startCategories = startCategories;
+    }
+
+    @Override
+    public PCLO_ConditionImplementation getPCLO_Implementation() {
+        return new PCLO_Condition_StartCategoriesToPlayers(players, startCategories);
     }
 }
