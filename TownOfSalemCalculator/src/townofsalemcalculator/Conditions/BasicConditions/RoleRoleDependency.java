@@ -1,8 +1,11 @@
 package townofsalemcalculator.Conditions.BasicConditions;
 
 import java.util.List;
+import townofsalemcalculator.Conditions.Condition;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleSelecter;
+import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_ConditionImplementation;
+import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_RoleRoleDependency;
 
 /**
  * The condition that a role can only exist if another role exists. For example the Vampire Hunter can only exists if there is a Vampire.
@@ -25,5 +28,10 @@ public class RoleRoleDependency implements Condition {
         this.startCategories = startCategories;
         this.dependentRole = dependentRole;
         this.influenceRole = influenceRole;
+    }
+
+    @Override
+    public PCLO_ConditionImplementation getPCLO_Implementation() {
+        return new PCLO_RoleRoleDependency(startCategories, dependentRole, influenceRole);
     }
 }
