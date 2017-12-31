@@ -3,6 +3,7 @@ package townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplemen
 import java.util.List;
 import scpsolver.problems.LPWizard;
 import townofsalemcalculator.Comparison;
+import townofsalemcalculator.Counter;
 import townofsalemcalculator.RoleGroup.RoleGroup;
 import townofsalemcalculator.RoleSelecter;
 
@@ -26,12 +27,13 @@ public class PCLO_Condition_RoleGroupAmount implements PCLO_ConditionImplementat
     }
 
     @Override
-    public void addHoldCondition(LPWizard lpw, int conditionNumber) {
+    public void addHoldCondition(LPWizard lpw, Counter counter, int conditionNumber) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void setCheckCondition(LPWizard lpw) {
+    public void setCheckCondition(LPWizard lpw, Counter counter) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
