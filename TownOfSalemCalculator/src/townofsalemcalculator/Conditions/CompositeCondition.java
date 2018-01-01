@@ -2,6 +2,8 @@ package townofsalemcalculator.Conditions;
 
 import java.util.ArrayList;
 import java.util.List;
+import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_ConditionImplementation;
+import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_Condition_CompositeCondition;
 
 /**
  * A Composite Condition are multiple Conditions included in one Condition
@@ -25,5 +27,10 @@ public class CompositeCondition implements Condition {
      */
     public void addCondition(Condition condition) {
         conditions.add(condition);
+    }
+
+    @Override
+    public PCLO_ConditionImplementation getPCLO_Implementation() {
+        return new PCLO_Condition_CompositeCondition(conditions);
     }
 }
