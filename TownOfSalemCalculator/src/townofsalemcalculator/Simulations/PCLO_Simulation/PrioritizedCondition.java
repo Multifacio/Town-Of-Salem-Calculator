@@ -1,6 +1,8 @@
 package townofsalemcalculator.Simulations.PCLO_Simulation;
 
+import scpsolver.problems.LPWizard;
 import townofsalemcalculator.Conditions.Condition;
+import townofsalemcalculator.Counter;
 
 /**
  * A Prioritized Condition is a condition with a priority value, which determines the likelihood that the condition is true.
@@ -36,5 +38,10 @@ public class PrioritizedCondition {
      */
     public double getPriority() {
         return priority;
+    }
+    
+    public void addHoldCondition(LPWizard lpw, Counter counter, int conditionNumber) {
+        lpw.plus("Constraint" + counter.getCounterValue(), priority);
+        condition.getPCLO_Implementation().addHoldCondition(lpw, counter, conditionNumber);
     }
 }
