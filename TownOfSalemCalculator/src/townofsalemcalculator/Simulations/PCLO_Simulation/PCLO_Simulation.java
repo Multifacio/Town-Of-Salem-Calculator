@@ -1,6 +1,7 @@
 package townofsalemcalculator.Simulations.PCLO_Simulation;
 
 import java.util.List;
+import scpsolver.problems.LPSolution;
 import scpsolver.problems.LPWizard;
 import townofsalemcalculator.Conditions.Condition;
 import townofsalemcalculator.Counter;
@@ -61,7 +62,8 @@ public class PCLO_Simulation {
         }
         setAllToBoolean(lpw, holds); //Set all lineair optimization variables to booleans
         lpw.setMinProblem(false); //Make a maximization problem of this Lineair Problem
-        double firstResult = lpw.solve().getObjectiveValue(); //Check the result first without adding the check condition
+        LPSolution sol = lpw.solve(); //Solve the lineair optimization problem
+        double firstResult = sol.getObjectiveValue(); //Check the result first without adding the check condition
         holdsLikelihood = sumOfPriorityValues - firstResult; //Set the new holdsLikelihood
         
         LPWizard lpw2 = new LPWizard(); //Create a new Lineair Problem
