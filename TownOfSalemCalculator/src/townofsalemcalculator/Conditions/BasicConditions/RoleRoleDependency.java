@@ -14,7 +14,7 @@ import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplement
  * @since 2017-12-30
  */
 public class RoleRoleDependency implements Condition {
-    private final List<RoleSelecter> startCategories; //The list of all Start Categories in a game
+    private final List<? extends RoleSelecter> startCategories; //The list of all Start Categories in a game
     private final Role dependentRole; //The role that cannot exist if the influenceRole does not exist
     private final Role influenceRole; //The role that must exist in order for the dependentRole to exist
     
@@ -24,7 +24,7 @@ public class RoleRoleDependency implements Condition {
      * @param dependentRole The role that cannot exist if the influenceRole does not exist
      * @param influenceRole The role that must exist in order for the dependentRole to exist
      */
-    public RoleRoleDependency(List<RoleSelecter> startCategories, Role dependentRole, Role influenceRole) {
+    public RoleRoleDependency(List<? extends RoleSelecter> startCategories, Role dependentRole, Role influenceRole) {
         this.startCategories = startCategories;
         this.dependentRole = dependentRole;
         this.influenceRole = influenceRole;
