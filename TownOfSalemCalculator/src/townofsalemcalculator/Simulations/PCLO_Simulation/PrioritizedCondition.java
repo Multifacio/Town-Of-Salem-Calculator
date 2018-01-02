@@ -41,7 +41,7 @@ public class PrioritizedCondition {
     }
     
     public void addHoldCondition(LPWizard lpw, Counter counter, int conditionNumber) {
-        lpw.plus("Constraint" + conditionNumber, priority);
+        lpw.plus("Condition" + conditionNumber, priority);
         condition.getPCLO_Implementation().addHoldCondition(lpw, counter, conditionNumber);
     }
 }

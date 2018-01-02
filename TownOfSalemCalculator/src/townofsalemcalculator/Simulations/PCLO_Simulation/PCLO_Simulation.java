@@ -62,8 +62,7 @@ public class PCLO_Simulation {
         }
         setAllToBoolean(lpw, holds); //Set all lineair optimization variables to booleans
         lpw.setMinProblem(false); //Make a maximization problem of this Lineair Problem
-        LPSolution sol = lpw.solve(); //Solve the lineair optimization problem
-        double firstResult = sol.getObjectiveValue(); //Check the result first without adding the check condition
+        double firstResult = lpw.solve().getObjectiveValue(); //Check the result first without adding the check condition
         holdsLikelihood = sumOfPriorityValues - firstResult; //Set the new holdsLikelihood
         
         LPWizard lpw2 = new LPWizard(); //Create a new Lineair Problem
@@ -91,7 +90,7 @@ public class PCLO_Simulation {
             }
         }
         for (int i = 0; i < holds.size(); i++) {
-            lpw.setBoolean("Constraint" + i);
+            lpw.setBoolean("Condition" + i);
         }
     }
 }
