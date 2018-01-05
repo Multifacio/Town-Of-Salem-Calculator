@@ -1,8 +1,8 @@
-package townofsalemcalculator.Conditions.GameModusConditions;
+package townofsalemcalculator.AbstractConditions.GameModusConditions;
 
 import java.util.List;
-import townofsalemcalculator.Conditions.AdvancedConditions.EitherRoleForRoleSelecter;
-import townofsalemcalculator.Conditions.CompositeCondition;
+import townofsalemcalculator.AbstractConditions.AdvancedConditions.EitherRoleForRoleSelecter;
+import townofsalemcalculator.AbstractConditions.CompositeCondition;
 import townofsalemcalculator.RoleGroup.RoleGroup;
 import townofsalemcalculator.StartCategory;
 
@@ -12,14 +12,14 @@ import townofsalemcalculator.StartCategory;
  * @version 1.0
  * @since 2018-1-1
  */
-public abstract class GameModus extends CompositeCondition {
+public abstract class GameModusAbstractCondition extends CompositeCondition {
     private final List<StartCategory> startCategories; //The list of all Start Categories in a game
     
     /**
      * Create a GameModus condition
      * @param startCategories The list of all Start Categories in a game
      */
-    public GameModus(List<StartCategory> startCategories) {
+    public GameModusAbstractCondition(List<StartCategory> startCategories) {
         this.startCategories = startCategories;
         initialize();
     }

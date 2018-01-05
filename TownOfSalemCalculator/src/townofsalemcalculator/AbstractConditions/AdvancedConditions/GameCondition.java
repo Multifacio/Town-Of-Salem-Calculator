@@ -1,9 +1,9 @@
-package townofsalemcalculator.Conditions.AdvancedConditions;
+package townofsalemcalculator.AbstractConditions.AdvancedConditions;
 
 import java.util.List;
-import townofsalemcalculator.Conditions.BasicConditions.RoleRoleDependency;
-import townofsalemcalculator.Conditions.BasicConditions.StartCategoriesToPlayers;
-import townofsalemcalculator.Conditions.CompositeCondition;
+import townofsalemcalculator.AbstractConditions.BasicConditions.RoleRoleDependency;
+import townofsalemcalculator.AbstractConditions.BasicConditions.StartCategoriesToPlayers;
+import townofsalemcalculator.AbstractConditions.CompositeCondition;
 import townofsalemcalculator.Player;
 import static townofsalemcalculator.Role.*;
 import townofsalemcalculator.StartCategory;

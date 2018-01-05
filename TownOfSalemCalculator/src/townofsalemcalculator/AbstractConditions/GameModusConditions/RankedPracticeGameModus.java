@@ -1,4 +1,4 @@
-package townofsalemcalculator.Conditions.GameModusConditions;
+package townofsalemcalculator.AbstractConditions.GameModusConditions;
 
 import java.util.List;
 import static townofsalemcalculator.Role.*;
@@ -16,7 +16,7 @@ import townofsalemcalculator.StartCategory;
  * @version 1.0
  * @since 2018-1-1
  */
-public class RankedPracticeGameModus extends GameModus {
+public class RankedPracticeGameModus extends GameModusAbstractCondition {
 
     public RankedPracticeGameModus(List<StartCategory> startCategories) {
         super(startCategories);

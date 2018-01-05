@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import townofsalemcalculator.Conditions.GameModusConditions.ClassicGameModus;
-import townofsalemcalculator.Conditions.GameModusConditions.GameModus;
+import townofsalemcalculator.AbstractConditions.GameModusConditions.ClassicGameModus;
+import townofsalemcalculator.AbstractConditions.GameModusConditions.GameModusAbstractCondition;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.AllRoles;
 

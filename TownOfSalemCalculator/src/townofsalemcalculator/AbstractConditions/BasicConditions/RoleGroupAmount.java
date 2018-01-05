@@ -1,12 +1,12 @@
-package townofsalemcalculator.Conditions.BasicConditions;
+package townofsalemcalculator.AbstractConditions.BasicConditions;
 
 import java.util.List;
 import townofsalemcalculator.Comparison;
-import townofsalemcalculator.Conditions.Condition;
 import townofsalemcalculator.RoleGroup.RoleGroup;
 import townofsalemcalculator.RoleSelecter;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_ConditionImplementation;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_Condition_RoleGroupAmount;
+import townofsalemcalculator.AbstractConditions.AbstractCondition;
 
 /**
  * A Role Group Amount is a condition that in a list of Role Selecters a certain Role Group must occur a given (minimum/maximum) amount of times.
@@ -15,7 +15,7 @@ import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplement
  * @version 1.0
  * @since 2017-12-30
  */
-public class RoleGroupAmount implements Condition {
+public class RoleGroupAmount implements AbstractCondition {
     private final List<? extends RoleSelecter> roleSelecters; //The list of Role Selecters in which roleGroup must appear (at least/at most) amount of times
     private final RoleGroup roleGroup; //The role group that must appear in the roleSelecters (at least/at most) amount of times
     private final Comparison comparison; //Determines whether the roleGroup must appear at least, at most or an equal amount of times as amount in the roleSelecters

@@ -1,4 +1,4 @@
-package townofsalemcalculator.Conditions.AdvancedConditions;
+package townofsalemcalculator.AbstractConditions.AdvancedConditions;
 
 import java.util.List;
 import townofsalemcalculator.Role;

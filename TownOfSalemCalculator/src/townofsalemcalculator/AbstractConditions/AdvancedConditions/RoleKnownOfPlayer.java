@@ -1,4 +1,4 @@
-package townofsalemcalculator.Conditions.AdvancedConditions;
+package townofsalemcalculator.AbstractConditions.AdvancedConditions;
 
 import townofsalemcalculator.Player;
 import townofsalemcalculator.Role;

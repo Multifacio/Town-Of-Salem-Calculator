@@ -1,16 +1,19 @@
 package townofsalemcalculator.Simulations.PCLO_Simulation;
 
+import townofsalemcalculator.AbstractConditions.AdvancedConditions.MinimumRoleAmount;
+import townofsalemcalculator.AbstractConditions.AdvancedConditions.RoleKnownOfPlayer;
+import townofsalemcalculator.AbstractConditions.AdvancedConditions.GameCondition;
+import townofsalemcalculator.AbstractConditions.AdvancedConditions.EitherRoleForRoleSelecter;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import townofsalemcalculator.Conditions.AdvancedConditions.*;
-import townofsalemcalculator.Conditions.Condition;
-import townofsalemcalculator.Conditions.GameModusConditions.RankedPracticeGameModus;
+import townofsalemcalculator.AbstractConditions.GameModusConditions.RankedPracticeGameModus;
 import townofsalemcalculator.Player;
 import static townofsalemcalculator.Role.*;
 import townofsalemcalculator.RoleGroup.ClueGroup.DeathRole;
 import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.AbstractConditions.AbstractCondition;
 
 /**
  * The PCLO Simulation Test
@@ -54,7 +57,7 @@ public class PCLO_SimulationTest {
         holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Janitor, 1), TOP_PRIORITY));
         holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Blackmailer, 1), TOP_PRIORITY));
         
-        Condition check = new RoleKnownOfPlayer(players.get(3), Medium);
+        AbstractCondition check = new RoleKnownOfPlayer(players.get(3), Medium);
         int likelihood = sim.doSimulation(check, holds);
         assertTrue("Impossible Town Support claim failed", likelihood == 0);
     }
@@ -81,7 +84,7 @@ public class PCLO_SimulationTest {
         holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(12), Escort), TOP_PRIORITY));
         holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(13), Spy), TOP_PRIORITY));
         
-        Condition check = new RoleKnownOfPlayer(players.get(14), Vigilante);
+        AbstractCondition check = new RoleKnownOfPlayer(players.get(14), Vigilante);
         int claimLikelihood = sim.doSimulation(check, holds);
         double holdsLikelihood = sim.holdsLikelihood();
         assertTrue("Possible claim failed", claimLikelihood == 100 && holdsLikelihood == 0.0);

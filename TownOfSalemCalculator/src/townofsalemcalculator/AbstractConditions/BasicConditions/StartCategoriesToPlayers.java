@@ -1,11 +1,11 @@
-package townofsalemcalculator.Conditions.BasicConditions;
+package townofsalemcalculator.AbstractConditions.BasicConditions;
 
 import java.util.List;
-import townofsalemcalculator.Conditions.Condition;
 import townofsalemcalculator.Player;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_ConditionImplementation;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_Condition_StartCategoriesToPlayers;
 import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.AbstractConditions.AbstractCondition;
 
 /**
  * The condition that all Start Categories are mapped to Players
@@ -13,7 +13,7 @@ import townofsalemcalculator.StartCategory;
  * @version 1.0
  * @since 2017-12-30
  */
-public class StartCategoriesToPlayers implements Condition {
+public class StartCategoriesToPlayers implements AbstractCondition {
     private final List<Player> players; //The list of all Players participating in a game
     private final List<StartCategory> startCategories; //The list of all Start Categories in a game
     

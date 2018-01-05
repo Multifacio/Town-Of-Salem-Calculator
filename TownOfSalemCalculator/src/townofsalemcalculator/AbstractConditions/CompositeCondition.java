@@ -1,4 +1,4 @@
-package townofsalemcalculator.Conditions;
+package townofsalemcalculator.AbstractConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,26 +6,26 @@ import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplement
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_Condition_CompositeCondition;
 
 /**
- * A Composite Condition are multiple Conditions included in one Condition
+ * A Composite AbstractCondition are multiple Conditions included in one AbstractCondition
  * @author Multifacio
  * @version 1.0
  * @since 2017-12-30
  */
-public class CompositeCondition implements Condition {
-    private List<Condition> conditions; //The Condition that are included in this Composite Condition
+public class CompositeCondition implements AbstractCondition {
+    private List<AbstractCondition> conditions; //The AbstractCondition that are included in this Composite AbstractCondition
     
     /**
-     * Create a Composite Condition consisting of no Conditions
+     * Create a Composite AbstractCondition consisting of no Conditions
      */
     public CompositeCondition() {
         conditions = new ArrayList();
     }
     
     /**
-     * Adds a Condition to the Composite Condition
-     * @param condition The Condition that will be included in this Composite Condition
+     * Adds a AbstractCondition to the Composite AbstractCondition
+     * @param condition The AbstractCondition that will be included in this Composite AbstractCondition
      */
-    public void addCondition(Condition condition) {
+    public void addCondition(AbstractCondition condition) {
         conditions.add(condition);
     }
 

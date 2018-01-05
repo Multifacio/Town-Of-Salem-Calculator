@@ -1,7 +1,7 @@
-package townofsalemcalculator.Conditions.AdvancedConditions;
+package townofsalemcalculator.AbstractConditions.AdvancedConditions;
 
 import java.util.List;
-import townofsalemcalculator.Conditions.CompositeCondition;
+import townofsalemcalculator.AbstractConditions.CompositeCondition;
 import townofsalemcalculator.Player;
 import townofsalemcalculator.RoleGroup.AllRoles;
 import townofsalemcalculator.StartCategory;

@@ -1,8 +1,8 @@
-package townofsalemcalculator.Conditions.AdvancedConditions;
+package townofsalemcalculator.AbstractConditions.AdvancedConditions;
 
 import java.util.List;
 import static townofsalemcalculator.Comparison.GreaterOrEqual;
-import townofsalemcalculator.Conditions.BasicConditions.RoleGroupAmount;
+import townofsalemcalculator.AbstractConditions.BasicConditions.RoleGroupAmount;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 import townofsalemcalculator.RoleSelecter;

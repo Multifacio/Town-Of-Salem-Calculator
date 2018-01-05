@@ -3,15 +3,15 @@ package townofsalemcalculator.Simulations.PCLO_Simulation;
 import java.util.List;
 import scpsolver.problems.LPSolution;
 import scpsolver.problems.LPWizard;
-import townofsalemcalculator.Conditions.Condition;
 import townofsalemcalculator.Counter;
 import townofsalemcalculator.Player;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.AllRoles;
 import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.AbstractConditions.AbstractCondition;
 
 /**
- * A Prioritized Condition Lineair Optimization simulation. It will determine how likely it is that a condition is true, based on other prioritized conditions.
+ * A Prioritized AbstractCondition Lineair Optimization simulation. It will determine how likely it is that a condition is true, based on other prioritized conditions.
  * @author Multifacio
  * @version 1.0
  * @since 2017-12-31
@@ -20,7 +20,7 @@ public class PCLO_Simulation {
     private final List<Player> players; //The list of all Players participating in a game
     private final List<StartCategory> startCategories; //The list of all Start Categories in a game
     /* The difference between the maximal sum of priority values of the given Prioritized Conditions that can actually hold and the sum of priority values of 
-    all given Prioritized Conditions. This double value give an indication about how much of the given Prioritized Condition can actually hold. The higher
+    all given Prioritized Conditions. This double value give an indication about how much of the given Prioritized AbstractCondition can actually hold. The higher
     this value the less amount of the given Prioritized Conditions can hold */
     private double holdsLikelihood; 
     
@@ -38,8 +38,8 @@ public class PCLO_Simulation {
     /**
      * Get the difference between the maximal sum of priority values of the given Prioritized Conditions that can actually hold and the sum of priority values 
      * of all given Prioritized Conditions. 
-     * @return This double value give an indication about how much of the given Prioritized Condition can actually hold. The 
-     * higher this value the less amount of the given Prioritized Conditions can hold.
+     * @return This double value give an indication about how much of the given Prioritized AbstractCondition can actually hold. The 
+ higher this value the less amount of the given Prioritized Conditions can hold.
      */
     public double holdsLikelihood() {
         return holdsLikelihood;
@@ -51,7 +51,7 @@ public class PCLO_Simulation {
      * @param holds The conditions which are known to may be hold
      * @return 
      */
-    public int doSimulation(Condition check, List<PrioritizedCondition> holds) {
+    public int doSimulation(AbstractCondition check, List<PrioritizedCondition> holds) {
         LPWizard lpw = new LPWizard(); //Create a new Lineair Problem
         Counter counter = new Counter(); //Create a Counter that is initialized to zero (used to give different constraints a different naming)
         double sumOfPriorityValues = 0.0; //The total sum of priority values of the Prioritized Conditions
