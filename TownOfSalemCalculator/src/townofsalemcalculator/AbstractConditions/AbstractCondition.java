@@ -3,7 +3,7 @@ package townofsalemcalculator.AbstractConditions;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_ConditionImplementation;
 
 /**
- * A AbstractCondition is a statement about the game
+ * A Abstract Condition is a statement about the game
  * @author Multifacio
  * @version 1.0
  * @since 2017-12-30
