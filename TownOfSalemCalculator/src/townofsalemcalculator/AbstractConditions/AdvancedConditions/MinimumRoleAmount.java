@@ -5,8 +5,8 @@ import static townofsalemcalculator.Comparison.GreaterOrEqual;
 import townofsalemcalculator.AbstractConditions.BasicConditions.RoleGroupAmount;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
-import townofsalemcalculator.RoleSelecter;
-import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.Game.RoleSelecter;
+import townofsalemcalculator.Game.StartCategory;
 
 /**
  * The Condition that a Role must occur a minimum amount of times. For example that there exist a Serial Killer in the game.

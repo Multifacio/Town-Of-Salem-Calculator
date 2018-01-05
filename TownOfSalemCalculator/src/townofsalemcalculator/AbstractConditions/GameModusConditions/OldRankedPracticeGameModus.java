@@ -10,7 +10,7 @@ import townofsalemcalculator.RoleGroup.NeutralGroup.NeutralKillingNonCoven;
 import townofsalemcalculator.RoleGroup.RoleGroup;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 import townofsalemcalculator.RoleGroup.TownGroup.*;
-import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.Game.StartCategory;
 
 /**
  * The Old Ranked Practice Game Modus 

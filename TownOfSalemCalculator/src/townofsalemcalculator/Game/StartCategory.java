@@ -1,4 +1,6 @@
-package townofsalemcalculator;
+package townofsalemcalculator.Game;
+
+import townofsalemcalculator.Game.RoleSelecter;
 
 /**
  * The Start Categories determine which roles might appear in the game. For example in Ranked Practise

@@ -2,7 +2,7 @@ package townofsalemcalculator.AbstractConditions.AdvancedConditions;
 
 import java.util.List;
 import townofsalemcalculator.Role;
-import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.Game.StartCategory;
 
 /**
  * The condition that a role must be unique (so at most 1 of this role). For example there cannot be 2 Veterans in the same game.

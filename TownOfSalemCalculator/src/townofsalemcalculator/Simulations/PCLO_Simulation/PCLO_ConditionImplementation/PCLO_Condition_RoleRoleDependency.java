@@ -5,7 +5,7 @@ import scpsolver.problems.LPWizard;
 import scpsolver.problems.LPWizardConstraint;
 import townofsalemcalculator.Counter;
 import townofsalemcalculator.Role;
-import townofsalemcalculator.RoleSelecter;
+import townofsalemcalculator.Game.RoleSelecter;
 
 public class PCLO_Condition_RoleRoleDependency implements PCLO_ConditionImplementation {
     private final List<? extends RoleSelecter> startCategories; //The list of all Start Categories in a game

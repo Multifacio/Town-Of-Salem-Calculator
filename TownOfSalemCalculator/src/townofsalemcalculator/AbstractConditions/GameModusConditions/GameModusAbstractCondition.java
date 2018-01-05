@@ -4,7 +4,7 @@ import java.util.List;
 import townofsalemcalculator.AbstractConditions.AdvancedConditions.EitherRoleForRoleSelecter;
 import townofsalemcalculator.AbstractConditions.CompositeCondition;
 import townofsalemcalculator.RoleGroup.RoleGroup;
-import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.Game.StartCategory;
 
 /**
  * A Game Modus is a condition that determines what roles the Start Categories can be

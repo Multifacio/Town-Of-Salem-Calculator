@@ -1,10 +1,10 @@
 package townofsalemcalculator.AbstractConditions.BasicConditions;
 
 import java.util.List;
-import townofsalemcalculator.Player;
+import townofsalemcalculator.Game.Player;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_ConditionImplementation;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_Condition_StartCategoriesToPlayers;
-import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.Game.StartCategory;
 import townofsalemcalculator.AbstractConditions.AbstractCondition;
 
 /**

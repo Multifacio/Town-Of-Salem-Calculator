@@ -9,10 +9,10 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import townofsalemcalculator.AbstractConditions.GameModusConditions.RankedPracticeGameModus;
-import townofsalemcalculator.Player;
+import townofsalemcalculator.Game.Player;
 import static townofsalemcalculator.Role.*;
 import townofsalemcalculator.RoleGroup.ClueGroup.DeathRole;
-import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.Game.StartCategory;
 import townofsalemcalculator.AbstractConditions.AbstractCondition;
 
 /**

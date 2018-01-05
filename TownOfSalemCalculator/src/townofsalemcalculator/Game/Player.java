@@ -1,4 +1,4 @@
-package townofsalemcalculator;
+package townofsalemcalculator.Game;
 
 /**
  * A Player is someone that participates in the game

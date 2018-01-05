@@ -8,7 +8,7 @@ import static townofsalemcalculator.Comparison.*;
 import townofsalemcalculator.Counter;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.RoleGroup;
-import townofsalemcalculator.RoleSelecter;
+import townofsalemcalculator.Game.RoleSelecter;
 
 public class PCLO_Condition_RoleGroupAmount implements PCLO_ConditionImplementation {
     private final List<? extends RoleSelecter> roleSelecters; //The list of Role Selecters in which roleGroup must appear (at least/at most) amount of times

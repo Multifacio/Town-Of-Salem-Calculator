@@ -4,11 +4,11 @@ import java.util.List;
 import scpsolver.problems.LPWizard;
 import scpsolver.problems.LPWizardConstraint;
 import townofsalemcalculator.Counter;
-import townofsalemcalculator.Player;
+import townofsalemcalculator.Game.Player;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.AllRoles;
-import townofsalemcalculator.RoleSelecter;
-import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.Game.RoleSelecter;
+import townofsalemcalculator.Game.StartCategory;
 
 public class PCLO_Condition_StartCategoriesToPlayers implements PCLO_ConditionImplementation {
     private final List<Player> players; //The list of all Players participating in a game

@@ -3,7 +3,7 @@ package townofsalemcalculator.AbstractConditions.BasicConditions;
 import java.util.List;
 import townofsalemcalculator.Comparison;
 import townofsalemcalculator.RoleGroup.RoleGroup;
-import townofsalemcalculator.RoleSelecter;
+import townofsalemcalculator.Game.RoleSelecter;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_ConditionImplementation;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_Condition_RoleGroupAmount;
 import townofsalemcalculator.AbstractConditions.AbstractCondition;

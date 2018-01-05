@@ -6,7 +6,7 @@ import townofsalemcalculator.RoleGroup.RoleGroup;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 import townofsalemcalculator.RoleGroup.TownGroup.TownGroupNonCoven;
 import townofsalemcalculator.RoleGroup.TownGroup.TownKillingNonCoven;
-import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.Game.StartCategory;
 
 /**
  * The Classic Game Modus 

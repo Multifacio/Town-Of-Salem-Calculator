@@ -4,7 +4,7 @@ import java.util.Collections;
 import static townofsalemcalculator.Comparison.Equal;
 import townofsalemcalculator.AbstractConditions.BasicConditions.RoleGroupAmount;
 import townofsalemcalculator.RoleGroup.RoleGroup;
-import townofsalemcalculator.RoleSelecter;
+import townofsalemcalculator.Game.RoleSelecter;
 
 /**
  * The Condition that a Role Selecter must be either one of these roles. For example John Proctor is either Escort, Transport or Consort.

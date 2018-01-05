@@ -4,9 +4,9 @@ import java.util.List;
 import townofsalemcalculator.AbstractConditions.BasicConditions.RoleRoleDependency;
 import townofsalemcalculator.AbstractConditions.BasicConditions.StartCategoriesToPlayers;
 import townofsalemcalculator.AbstractConditions.CompositeCondition;
-import townofsalemcalculator.Player;
+import townofsalemcalculator.Game.Player;
 import static townofsalemcalculator.Role.*;
-import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.Game.StartCategory;
 
 /**
  * All conditions that hold in every Town of Salem game are included here

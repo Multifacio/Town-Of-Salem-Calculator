@@ -1,4 +1,4 @@
-package townofsalemcalculator;
+package townofsalemcalculator.Game;
 
 /**
  * A Role Selecter is something that can have a Role

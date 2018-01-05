@@ -2,9 +2,9 @@ package townofsalemcalculator.AbstractConditions.AdvancedConditions;
 
 import java.util.List;
 import townofsalemcalculator.AbstractConditions.CompositeCondition;
-import townofsalemcalculator.Player;
+import townofsalemcalculator.Game.Player;
 import townofsalemcalculator.RoleGroup.AllRoles;
-import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.Game.StartCategory;
 
 /**
  * The Condition that all Start Categories and all Players have exactly 1 role.

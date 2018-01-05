@@ -4,10 +4,10 @@ import java.util.List;
 import scpsolver.problems.LPSolution;
 import scpsolver.problems.LPWizard;
 import townofsalemcalculator.Counter;
-import townofsalemcalculator.Player;
+import townofsalemcalculator.Game.Player;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.AllRoles;
-import townofsalemcalculator.StartCategory;
+import townofsalemcalculator.Game.StartCategory;
 import townofsalemcalculator.AbstractConditions.AbstractCondition;
 
 /**

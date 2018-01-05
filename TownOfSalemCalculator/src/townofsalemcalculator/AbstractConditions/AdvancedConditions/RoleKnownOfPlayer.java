@@ -1,6 +1,6 @@
 package townofsalemcalculator.AbstractConditions.AdvancedConditions;
 
-import townofsalemcalculator.Player;
+import townofsalemcalculator.Game.Player;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 
