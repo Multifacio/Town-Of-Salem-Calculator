@@ -2,10 +2,8 @@ package townofsalemcalculator.GUI;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import townofsalemcalculator.AbstractConditions.GameModusConditions.ClassicGameModus;
-import townofsalemcalculator.AbstractConditions.GameModusConditions.GameModusAbstractCondition;
+import javax.swing.JFrame;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.AllRoles;
 
@@ -15,7 +13,7 @@ import townofsalemcalculator.RoleGroup.AllRoles;
  * @version 1.0
  * @since 2018-1-4
  */
-public class StartFrame extends javax.swing.JFrame {
+public class StartFrame extends JFrame {
     /**
      * Creates new form StartFrame
      */
@@ -368,18 +366,6 @@ public class StartFrame extends javax.swing.JFrame {
     
     private void updateGameModus() {
 
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new StartFrame().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
