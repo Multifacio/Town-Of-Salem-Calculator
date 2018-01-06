@@ -66,7 +66,7 @@ public class PCLO_Simulation implements Simulation {
         return convertedConditions;
     }
     
-    private double doSimulationWithPrioritizedConditions(AbstractCondition check, List<PrioritizedCondition> holds) {
+    public double doSimulationWithPrioritizedConditions(AbstractCondition check, List<PrioritizedCondition> holds) {
         LPWizard lpw = new LPWizard(); //Create a new Lineair Problem
         Counter counter = new Counter(); //Create a Counter that is initialized to zero (used to give different constraints a different naming)
         double sumOfPriorityValues = 0.0; //The total sum of priority values of the Prioritized Conditions

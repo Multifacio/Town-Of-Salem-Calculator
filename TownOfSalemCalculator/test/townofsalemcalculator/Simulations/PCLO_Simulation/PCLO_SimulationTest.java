@@ -58,8 +58,8 @@ public class PCLO_SimulationTest {
         holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Blackmailer, 1), TOP_PRIORITY));
         
         AbstractCondition check = new RoleKnownOfPlayer(players.get(3), Medium);
-        int likelihood = sim.doSimulation(check, holds);
-        assertTrue("Impossible Town Support claim failed", likelihood == 0);
+        double likelihood = sim.doSimulationWithPrioritizedConditions(check, holds);
+        assertTrue("Impossible Town Support claim failed", likelihood == 0.0);
     }
     
     /**
@@ -85,8 +85,8 @@ public class PCLO_SimulationTest {
         holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(13), Spy), TOP_PRIORITY));
         
         AbstractCondition check = new RoleKnownOfPlayer(players.get(14), Vigilante);
-        int claimLikelihood = sim.doSimulation(check, holds);
+        double claimLikelihood = sim.doSimulationWithPrioritizedConditions(check, holds);
         double holdsLikelihood = sim.holdsLikelihood();
-        assertTrue("Possible claim failed", claimLikelihood == 100 && holdsLikelihood == 0.0);
+        assertTrue("Possible claim failed", claimLikelihood == 100.0 && holdsLikelihood == 0.0);
     }
 }
