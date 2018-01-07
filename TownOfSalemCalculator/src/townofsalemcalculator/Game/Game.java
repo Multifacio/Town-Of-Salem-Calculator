@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import townofsalemcalculator.AbstractConditions.AdvancedConditions.EitherRoleForRoleSelecter;
 import townofsalemcalculator.ConcreteConditions.ConcreteCondition;
 import townofsalemcalculator.GameModus;
 import townofsalemcalculator.Role;
+import townofsalemcalculator.RoleGroup.ClueGroup.TownFriendlyNonCoven;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_Simulation;
 import townofsalemcalculator.Simulations.Simulation;
 
@@ -24,7 +26,7 @@ public class Game {
     
     private List<ConcreteCondition> conditions; //The list of all conditions that are known to be true
     private Map<Player, Double> claimLikelihood; //Contains the likelihood of a claim for each player
-    private Map<Player, Double> goodLikelihood; //Contains the likelihood that a player is good
+    private Map<Player, Double> goodLikelihood; //Contains the likelihood that a player is not the opposite of town
 
     public Game() {
         conditions = new ArrayList();
@@ -63,9 +65,10 @@ public class Game {
     }
     
     public void updateInformationWithSimulation() {
-        //
+        //Update the good likelihood
         for (Player p : players) {
-            double likelihood = simulation.doSimulation(new EitherRoleForRoleSelecter(p, ), conditions);
+            double likelihood = simulation.doSimulation(new EitherRoleForRoleSelecter(p, new TownFriendlyNonCoven()), conditions);
+            goodLikelihood.put(p, likelihood);
         }
     }
 }
