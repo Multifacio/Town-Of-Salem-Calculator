@@ -1,12 +1,3 @@
-
-TownOfSalemCalculator/nbproject/private/
-
-TownOfSalemCalculator/build/built-jar\.properties
-
-*.class
-
-TownOfSalemCalculator/build/test/results/TEST-townofsalemcalculator\.RoleGroup\.AllRolesNonCovenTest\.xml
-
-*.properties
-
-TownOfSalemCalculator/build/test/results/TEST-townofsalemcalculator\.Simulations\.PCLO_Simulation\.PCLO_SimulationTest\.xml
+TownOfSalemCalculator/nbproject/*
+TownOfSalemCalculator/manifest.mf
+TownOfSalemCalculator/build.xml
