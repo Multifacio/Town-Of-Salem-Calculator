@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import townofsalemcalculator.AbstractConditions.AbstractCondition;
 import townofsalemcalculator.AbstractConditions.AdvancedConditions.EitherRoleForRoleSelecter;
 import townofsalemcalculator.ConcreteConditions.ConcreteCondition;
 import townofsalemcalculator.GameModus;
@@ -25,9 +26,9 @@ public class Game {
     private Simulation simulation; //The simulation that will be used to check the likelihood of conditions
     
     private List<ConcreteCondition> conditions; //The list of all conditions that are known to be true
-    private Map<Player, Double> claimLikelihood; //Contains the likelihood of a claim for each player
     private Map<Player, Double> goodLikelihood; //Contains the likelihood that a player is not the opposite of town
-
+    private Map<Player, Double> claimLikelihood; //Contains the likelihood of a claim for each player
+    
     public Game() {
         conditions = new ArrayList();
         players = new ArrayList();
@@ -65,10 +66,37 @@ public class Game {
     }
     
     public void updateInformationWithSimulation() {
-        //Update the good likelihood
+        class MultithreadedSimulation implements Runnable {
+            private double likelihood;
+            private final AbstractCondition check;
+            private final List<ConcreteCondition> holds;
+            
+            public MultithreadedSimulation(AbstractCondition check, List<ConcreteCondition> holds) {
+                this.check = check;
+                this.holds = holds;
+            }
+            
+            @Override
+            public void run() {
+                likelihood = simulation.doSimulation(check, holds);
+            } 
+            
+            public double getLikelihood() {
+                return likelihood;
+            }
+        }
+        
+        Map<Player, Thread> goodLikelihoodThreads = new HashMap(); //Contains all threads that calculate the good likelihood of the players
+        Map<Player, Double> claimLikelihoodThreads = new HashMap(); //Contains all threads that calculate the claim likelihood of the players
+        
+        //Run different threads that calculate the good likelihood of the players
         for (Player p : players) {
-            double likelihood = simulation.doSimulation(new EitherRoleForRoleSelecter(p, new TownFriendlyNonCoven()), conditions);
-            goodLikelihood.put(p, likelihood);
+            AbstractCondition check = new EitherRoleForRoleSelecter(p, new TownFriendlyNonCoven()); //The condition which will be checked
+            //Create a new thread that will be runned
+            MultithreadedSimulation mts = new MultithreadedSimulation(check, conditions);
+            Thread t = new Thread(mts);
+            t.start();
+            goodLikelihoodThreads.put(p, t); //Add the thread to the map
         }
     }
 }
