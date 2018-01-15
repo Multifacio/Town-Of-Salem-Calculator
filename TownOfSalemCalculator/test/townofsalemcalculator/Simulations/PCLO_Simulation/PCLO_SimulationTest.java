@@ -11,7 +11,7 @@ import org.junit.Test;
 import townofsalemcalculator.AbstractConditions.GameModusConditions.RankedPracticeGameModus;
 import townofsalemcalculator.Game.Player;
 import static townofsalemcalculator.Role.*;
-import townofsalemcalculator.RoleGroup.ClueGroup.DeathRole;
+import townofsalemcalculator.RoleGroup.ClueGroup.IncludingDisguiser;
 import townofsalemcalculator.Game.StartCategory;
 import townofsalemcalculator.AbstractConditions.AbstractCondition;
 import townofsalemcalculator.AbstractConditions.GameModusConditions.OldRankedPracticeGameModus;
@@ -56,8 +56,8 @@ public class PCLO_SimulationTest {
         holds.add(new PrioritizedCondition(new RankedPracticeGameModus(startCategories), TOP_PRIORITY));
         holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(5), Mayor), TOP_PRIORITY));
         holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Transporter, 1), 10000.0));
-        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(8), new DeathRole(Escort)), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(9), new DeathRole(Medium)), TOP_PRIORITY));
+        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(8), new IncludingDisguiser(new SingleRoleGroup(Escort))), TOP_PRIORITY));
+        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(9), new IncludingDisguiser(new SingleRoleGroup(Medium))), TOP_PRIORITY));
         holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Janitor, 1), TOP_PRIORITY));
         holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Blackmailer, 1), TOP_PRIORITY));
         
