@@ -9,7 +9,7 @@ import townofsalemcalculator.AbstractConditions.AdvancedConditions.EitherRoleFor
 import townofsalemcalculator.ConcreteConditions.ConcreteCondition;
 import townofsalemcalculator.GameModus;
 import townofsalemcalculator.Role;
-import townofsalemcalculator.RoleGroup.ClueGroup.TownFriendlyNonCoven;
+import townofsalemcalculator.RoleGroup.ClueGroup.DetermineGroup.TownFriendlyNonCoven;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_Simulation;
 import townofsalemcalculator.Simulations.Simulation;
 

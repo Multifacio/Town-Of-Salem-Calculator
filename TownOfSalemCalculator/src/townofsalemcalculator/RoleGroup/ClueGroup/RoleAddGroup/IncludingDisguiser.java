@@ -1,6 +1,5 @@
-package townofsalemcalculator.RoleGroup.ClueGroup;
+package townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup;
 
-import townofsalemcalculator.Role;
 import static townofsalemcalculator.Role.Disguiser;
 import townofsalemcalculator.RoleGroup.CompositeRoleGroup;
 import townofsalemcalculator.RoleGroup.RoleGroup;

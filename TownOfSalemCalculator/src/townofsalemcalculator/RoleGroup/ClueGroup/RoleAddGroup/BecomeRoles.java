@@ -1,7 +1,6 @@
-package townofsalemcalculator.RoleGroup.ClueGroup;
+package townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup;
 
 import java.util.HashMap;
-import java.util.Set;
 import townofsalemcalculator.Role;
 import static townofsalemcalculator.Role.*;
 import townofsalemcalculator.RoleGroup.ClueGroup.MafiaExceptGodfatherAndMafioso;

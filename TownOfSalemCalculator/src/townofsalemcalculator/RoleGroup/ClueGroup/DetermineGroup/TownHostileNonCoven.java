@@ -1,4 +1,4 @@
-package townofsalemcalculator.RoleGroup.ClueGroup;
+package townofsalemcalculator.RoleGroup.ClueGroup.DetermineGroup;
 
 import static townofsalemcalculator.Role.Witch;
 import townofsalemcalculator.RoleGroup.CompositeRoleGroup;
@@ -12,7 +12,7 @@ import townofsalemcalculator.RoleGroup.SingleRoleGroup;
  * @version 1.0
  * @since 2017-1-6
  */
-public class TownHostileNonCoven extends CompositeRoleGroup {
+public final class TownHostileNonCoven extends CompositeRoleGroup {
     public TownHostileNonCoven() {
         addRoleGroup(new MafiaGroupNonCoven());
         addRoleGroup(new NeutralKillingNonCoven());

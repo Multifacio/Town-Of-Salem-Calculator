@@ -11,11 +11,11 @@ import org.junit.Test;
 import townofsalemcalculator.AbstractConditions.GameModusConditions.RankedPracticeGameModus;
 import townofsalemcalculator.Game.Player;
 import static townofsalemcalculator.Role.*;
-import townofsalemcalculator.RoleGroup.ClueGroup.IncludingDisguiser;
+import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.IncludingDisguiser;
 import townofsalemcalculator.Game.StartCategory;
 import townofsalemcalculator.AbstractConditions.AbstractCondition;
 import townofsalemcalculator.AbstractConditions.GameModusConditions.OldRankedPracticeGameModus;
-import townofsalemcalculator.RoleGroup.ClueGroup.TownFriendlyNonCoven;
+import townofsalemcalculator.RoleGroup.ClueGroup.DetermineGroup.TownFriendlyNonCoven;
 import townofsalemcalculator.RoleGroup.CompositeRoleGroup;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 

@@ -1,4 +1,4 @@
-package townofsalemcalculator.RoleGroup.ClueGroup;
+package townofsalemcalculator.RoleGroup.ClueGroup.DetermineGroup;
 
 import townofsalemcalculator.RoleGroup.AllRolesNonCoven;
 import townofsalemcalculator.RoleGroup.DifferenceRoleGroup;
