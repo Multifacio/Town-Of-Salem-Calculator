@@ -6,7 +6,7 @@ import townofsalemcalculator.RoleGroup.RoleGroup;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 
 /**
- * When someone dies its Role will be known, so then it belongs to this RoleGroup
+ * When someone dies its Role will be known, so then it belongs to this Role Group
  * @author Multifacio
  * @version 1.0
  * @since 2018-1-1
