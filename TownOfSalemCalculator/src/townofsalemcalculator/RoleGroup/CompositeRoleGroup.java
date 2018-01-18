@@ -26,7 +26,7 @@ public class CompositeRoleGroup implements RoleGroup {
      * Add a Role Group to the Composite Role Group
      * @param roleGroup The Role Group that will be included in this Composite Role Group.
      */
-    public void addRoleGroup(RoleGroup roleGroup) {
+    public final void addRoleGroup(RoleGroup roleGroup) {
         roleGroups.add(roleGroup);
     }
     

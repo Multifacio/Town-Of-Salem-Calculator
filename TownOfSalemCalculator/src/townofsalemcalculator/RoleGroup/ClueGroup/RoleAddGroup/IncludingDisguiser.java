@@ -11,7 +11,7 @@ import townofsalemcalculator.RoleGroup.SingleRoleGroup;
  * @version 1.0
  * @since 2018-1-1
  */
-public final class IncludingDisguiser extends CompositeRoleGroup {
+public class IncludingDisguiser extends CompositeRoleGroup {
     public IncludingDisguiser(RoleGroup roleGroup) {
         addRoleGroup(roleGroup);
         addRoleGroup(new SingleRoleGroup(Disguiser));

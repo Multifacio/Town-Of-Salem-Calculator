@@ -14,7 +14,7 @@ import townofsalemcalculator.RoleGroup.SingleRoleGroup;
  * @version 1.0
  * @since 2017-1-7
  */
-public final class BecomeRoles extends CompositeRoleGroup {
+public class BecomeRoles extends CompositeRoleGroup {
     public BecomeRoles(RoleGroup roleGroup) {
         addRoleGroup(roleGroup); 
         HashMap<Role, RoleGroup> roleBecomeMapping = roleGroupThatCanBecomeRole();
