@@ -14,7 +14,8 @@ import townofsalemcalculator.RoleGroup.SingleRoleGroup;
  * @version 1.0
  * @since 2018-1-18
  */
-public class IncludingAmnesiac extends IncludeRoleGroupIfRoleExist {
+public class IncludingAmnesiac implements RoleGroup {
+    private final RoleGroup roleGroup; //The included Role Group
     private final Set<Role> amnesiacTurnedInto; //All roles which an Amnesiac has turned into
     
     /**
@@ -23,17 +24,30 @@ public class IncludingAmnesiac extends IncludeRoleGroupIfRoleExist {
      * @param amnesiacTurnedInto The set of all roles in which an Amnesiac has turned into
      */
     public IncludingAmnesiac(RoleGroup roleGroup, Set<Role> amnesiacTurnedInto) {
-        super(roleGroup);
+        this.roleGroup = roleGroup;
         this.amnesiacTurnedInto = amnesiacTurnedInto;
     }
 
     @Override
-    public HashMap<Role, RoleGroup> getRoleIncludeMapping() {
-        HashMap<Role, RoleGroup> roleIncludeMapping = new HashMap();
-        Iterator<Role> iterator = amnesiacTurnedInto.iterator();
-        while(iterator.hasNext()) {
-            roleIncludeMapping.put(iterator.next(), new SingleRoleGroup(Amnesiac));
+    public Set<Role> getRoles() {
+        class IncludingAmnesiacInner extends IncludeRoleGroupIfRoleExist {
+            public IncludingAmnesiacInner(RoleGroup roleGroup) {
+                super(roleGroup);
+            }
+
+            @Override
+            public HashMap<Role, RoleGroup> getRoleIncludeMapping() {
+                HashMap<Role, RoleGroup> roleIncludeMapping = new HashMap();
+                Iterator<Role> iterator = amnesiacTurnedInto.iterator();
+                while(iterator.hasNext()) {
+                    roleIncludeMapping.put(iterator.next(), new SingleRoleGroup(Amnesiac));
+                }
+                return roleIncludeMapping;
+            }
+        
         }
-        return roleIncludeMapping;
+        
+        RoleGroup rg = new IncludingAmnesiacInner(roleGroup);
+        return rg.getRoles();
     }
 }

@@ -17,11 +17,11 @@ public class StandardInclude extends IncludingAmnesiac {
      * @param amnesiacTurnedInto The set of all roles in which an Amnesiac has turned into
      */
     public StandardInclude(RoleGroup roleGroup, Set<Role> amnesiacTurnedInto) {
-        super(new StandardIncludeFirstStep(roleGroup), amnesiacTurnedInto);
+        super(new StandardIncludeInner(roleGroup), amnesiacTurnedInto);
     }
     
-    static class StandardIncludeFirstStep extends IncludingBecomeRoles {
-        public StandardIncludeFirstStep(RoleGroup roleGroup) {
+    static class StandardIncludeInner extends IncludingBecomeRoles {
+        public StandardIncludeInner(RoleGroup roleGroup) {
             super(roleGroup);
         }
     }
