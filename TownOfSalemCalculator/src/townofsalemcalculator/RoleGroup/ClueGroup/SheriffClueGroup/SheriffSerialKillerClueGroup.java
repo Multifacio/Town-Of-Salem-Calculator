@@ -1,7 +1,9 @@
 package townofsalemcalculator.RoleGroup.ClueGroup.SheriffClueGroup;
 
+import java.util.Set;
+import townofsalemcalculator.Role;
 import static townofsalemcalculator.Role.SerialKiller;
-import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.IncludingBecomeRoles;
+import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.StandardInclude;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 
 /**
@@ -10,9 +12,9 @@ import townofsalemcalculator.RoleGroup.SingleRoleGroup;
  * @version 1.0
  * @since 2017-1-17
  */
-public class SheriffSerialKillerClueGroup extends IncludingBecomeRoles {
+public class SheriffSerialKillerClueGroup extends StandardInclude {
     
-    public SheriffSerialKillerClueGroup() {
-        super(new SingleRoleGroup(SerialKiller));
+    public SheriffSerialKillerClueGroup(Set<Role> amnesiacTurnedInto) {
+        super(new SingleRoleGroup(SerialKiller), amnesiacTurnedInto);
     }
 }

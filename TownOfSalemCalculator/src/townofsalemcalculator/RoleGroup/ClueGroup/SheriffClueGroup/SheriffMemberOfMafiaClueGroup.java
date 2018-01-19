@@ -1,9 +1,9 @@
 package townofsalemcalculator.RoleGroup.ClueGroup.SheriffClueGroup;
 
-import static townofsalemcalculator.Role.Godfather;
-import townofsalemcalculator.RoleGroup.DifferenceRoleGroup;
-import townofsalemcalculator.RoleGroup.MafiaGroup.MafiaGroupNonCoven;
-import townofsalemcalculator.RoleGroup.SingleRoleGroup;
+import townofsalemcalculator.RoleGroup.ClueGroup.RemainderGroup.MafiaExceptGodfather;
+import java.util.Set;
+import townofsalemcalculator.Role;
+import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.StandardInclude;
 
 /**
  * The role group of the player for which the Sheriff gets the message that he is member of the Mafia
@@ -11,9 +11,9 @@ import townofsalemcalculator.RoleGroup.SingleRoleGroup;
  * @version 1.0
  * @since 2017-1-17
  */
-public class SheriffMemberOfMafiaClueGroup extends DifferenceRoleGroup {
+public class SheriffMemberOfMafiaClueGroup extends StandardInclude {
     
-    public SheriffMemberOfMafiaClueGroup() {
-        super(new MafiaGroupNonCoven(), new SingleRoleGroup(Godfather));
+    public SheriffMemberOfMafiaClueGroup(Set<Role> amnesiacTurnedInto) {
+        super(new MafiaExceptGodfather(), amnesiacTurnedInto);
     }  
 }
