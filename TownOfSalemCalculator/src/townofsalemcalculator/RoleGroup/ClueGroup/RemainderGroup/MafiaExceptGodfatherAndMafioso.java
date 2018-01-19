@@ -1,5 +1,6 @@
-package townofsalemcalculator.RoleGroup.ClueGroup;
+package townofsalemcalculator.RoleGroup.ClueGroup.RemainderGroup;
 
+import townofsalemcalculator.RoleGroup.ClueGroup.RemainderGroup.GodfatherAndMafioso;
 import townofsalemcalculator.RoleGroup.DifferenceRoleGroup;
 import townofsalemcalculator.RoleGroup.MafiaGroup.MafiaGroupNonCoven;
 import townofsalemcalculator.RoleGroup.RoleGroup;

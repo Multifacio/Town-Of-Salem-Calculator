@@ -1,4 +1,4 @@
-package townofsalemcalculator.RoleGroup.ClueGroup;
+package townofsalemcalculator.RoleGroup.ClueGroup.RemainderGroup;
 
 import static townofsalemcalculator.Role.Godfather;
 import static townofsalemcalculator.Role.Mafioso;
