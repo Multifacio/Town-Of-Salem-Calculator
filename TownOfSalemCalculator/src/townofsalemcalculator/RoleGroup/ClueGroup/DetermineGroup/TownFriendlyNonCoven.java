@@ -1,5 +1,7 @@
 package townofsalemcalculator.RoleGroup.ClueGroup.DetermineGroup;
 
+import java.util.Set;
+import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.AllRolesNonCoven;
 import townofsalemcalculator.RoleGroup.DifferenceRoleGroup;
 
@@ -11,8 +13,8 @@ import townofsalemcalculator.RoleGroup.DifferenceRoleGroup;
  */
 public final class TownFriendlyNonCoven extends DifferenceRoleGroup {
     
-    public TownFriendlyNonCoven() {
-        super(new AllRolesNonCoven(), new TownHostileNonCoven());
+    public TownFriendlyNonCoven(Set<Role> amnesiacTurnedInto) {
+        super(new AllRolesNonCoven(), new TownHostileNonCoven(amnesiacTurnedInto));
     }
     
 }
