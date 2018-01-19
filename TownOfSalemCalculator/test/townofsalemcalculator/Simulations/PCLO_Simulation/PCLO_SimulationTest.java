@@ -5,6 +5,7 @@ import townofsalemcalculator.AbstractConditions.AdvancedConditions.RoleKnownOfPl
 import townofsalemcalculator.AbstractConditions.AdvancedConditions.GameCondition;
 import townofsalemcalculator.AbstractConditions.AdvancedConditions.EitherRoleForRoleSelecter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
@@ -126,7 +127,7 @@ public class PCLO_SimulationTest {
         holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Vigilante, 1), TOP_PRIORITY));
         
         
-        AbstractCondition check = new EitherRoleForRoleSelecter(players.get(0), new TownFriendlyNonCoven());
+        AbstractCondition check = new EitherRoleForRoleSelecter(players.get(0), new TownFriendlyNonCoven(new HashSet()));
         long startTime = System.currentTimeMillis(); //Start with measuring the time
         sim.doSimulationWithPrioritizedConditions(check, holds);
         long totalTime = System.currentTimeMillis() - startTime; //Get the total running time of the simulation
