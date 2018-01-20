@@ -3,7 +3,7 @@ package townofsalemcalculator.RoleGroup.ClueGroup.SheriffClueGroup;
 import java.util.Set;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.AllRoles;
-import townofsalemcalculator.RoleGroup.ClueGroup.RemainderGroup.SheriffSuspiciousFullMoon;
+import townofsalemcalculator.RoleGroup.ClueGroup.IndirectClueGroup.SheriffSuspiciousFullMoon;
 import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.StandardInclude;
 import townofsalemcalculator.RoleGroup.DifferenceRoleGroup;
 

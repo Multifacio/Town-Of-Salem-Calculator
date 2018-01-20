@@ -1,4 +1,4 @@
-package townofsalemcalculator.RoleGroup.ClueGroup.RemainderGroup;
+package townofsalemcalculator.RoleGroup.ClueGroup.IndirectClueGroup;
 
 import static townofsalemcalculator.Role.Werewolf;
 import townofsalemcalculator.RoleGroup.CompositeRoleGroup;

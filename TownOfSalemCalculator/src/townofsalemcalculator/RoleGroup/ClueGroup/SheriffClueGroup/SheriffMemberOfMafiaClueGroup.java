@@ -1,6 +1,6 @@
 package townofsalemcalculator.RoleGroup.ClueGroup.SheriffClueGroup;
 
-import townofsalemcalculator.RoleGroup.ClueGroup.RemainderGroup.MafiaExceptGodfather;
+import townofsalemcalculator.RoleGroup.ClueGroup.IndirectClueGroup.MafiaExceptGodfather;
 import java.util.Set;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.StandardInclude;
