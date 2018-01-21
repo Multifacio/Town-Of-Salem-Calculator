@@ -3,6 +3,7 @@ package townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup;
 import java.util.HashMap;
 import townofsalemcalculator.Role;
 import static townofsalemcalculator.Role.*;
+import townofsalemcalculator.RoleGroup.ClueGroup.IndirectClueGroup.CanBecomeVampire;
 import townofsalemcalculator.RoleGroup.ClueGroup.IndirectClueGroup.MafiaExceptGodfatherAndMafioso;
 import townofsalemcalculator.RoleGroup.RoleGroup;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
@@ -26,6 +27,7 @@ public class IncludingBecomeRoles extends IncludeRoleGroupIfRoleExist {
         roleBecomeMapping.put(Mafioso, new MafiaExceptGodfatherAndMafioso());
         roleBecomeMapping.put(Vigilante, new SingleRoleGroup(VampireHunter));
         roleBecomeMapping.put(Jester, new SingleRoleGroup(Executioner));
+        //roleBecomeMapping.put(Vampire, new CanBecomeVampire());
         return roleBecomeMapping;
     }
 }
