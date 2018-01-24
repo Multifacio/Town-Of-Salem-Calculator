@@ -1,9 +1,7 @@
 package townofsalemcalculator.RoleGroup.ClueGroup.IndirectClueGroup;
 
-import townofsalemcalculator.RoleGroup.ClueGroup.IndirectClueGroup.GodfatherAndMafioso;
 import townofsalemcalculator.RoleGroup.DifferenceRoleGroup;
 import townofsalemcalculator.RoleGroup.MafiaGroup.MafiaGroupNonCoven;
-import townofsalemcalculator.RoleGroup.RoleGroup;
 
 /**
  * The group consisting of all Mafia roles except the Mafioso and the Godfather

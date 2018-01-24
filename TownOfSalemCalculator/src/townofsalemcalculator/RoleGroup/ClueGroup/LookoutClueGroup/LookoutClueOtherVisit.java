@@ -3,7 +3,7 @@ package townofsalemcalculator.RoleGroup.ClueGroup.LookoutClueGroup;
 import java.util.Set;
 import townofsalemcalculator.Role;
 import static townofsalemcalculator.Role.*;
-import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.FullInclude;
+import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.StandardInclude;
 import townofsalemcalculator.RoleGroup.CompositeRoleGroup;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 
@@ -13,7 +13,7 @@ import townofsalemcalculator.RoleGroup.SingleRoleGroup;
  * @version 1.0
  * @since 2017-1-21
  */
-public class LookoutClueOtherVisit extends FullInclude {
+public class LookoutClueOtherVisit extends StandardInclude {
     
     public LookoutClueOtherVisit(Set<Role> amnesiacTurnedInto) {
         super(new LookoutInnerClueGroup(), amnesiacTurnedInto);

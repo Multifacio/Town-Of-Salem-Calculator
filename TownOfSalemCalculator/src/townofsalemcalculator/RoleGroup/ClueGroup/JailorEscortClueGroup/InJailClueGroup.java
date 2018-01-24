@@ -4,7 +4,7 @@ import java.util.Set;
 import townofsalemcalculator.Role;
 import static townofsalemcalculator.Role.Jailor;
 import townofsalemcalculator.RoleGroup.AllRoles;
-import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.FullInclude;
+import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.StandardInclude;
 import townofsalemcalculator.RoleGroup.DifferenceRoleGroup;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 
@@ -14,7 +14,7 @@ import townofsalemcalculator.RoleGroup.SingleRoleGroup;
  * @version 1.0
  * @since 2017-1-24
  */
-public class InJailClueGroup extends FullInclude {
+public class InJailClueGroup extends StandardInclude {
     
     public InJailClueGroup(Set<Role> amnesiacTurnedInto) {
         super(new InJailInnerClueGroup(), amnesiacTurnedInto);

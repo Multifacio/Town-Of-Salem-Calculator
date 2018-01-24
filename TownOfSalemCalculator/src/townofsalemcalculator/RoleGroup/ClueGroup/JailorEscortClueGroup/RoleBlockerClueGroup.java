@@ -4,7 +4,7 @@ import java.util.Set;
 import townofsalemcalculator.Role;
 import static townofsalemcalculator.Role.Consort;
 import static townofsalemcalculator.Role.Escort;
-import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.FullInclude;
+import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.StandardInclude;
 import townofsalemcalculator.RoleGroup.CompositeRoleGroup;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 
@@ -14,7 +14,7 @@ import townofsalemcalculator.RoleGroup.SingleRoleGroup;
  * @version 1.0
  * @since 2017-1-24
  */
-public class RoleBlockerClueGroup extends FullInclude {
+public class RoleBlockerClueGroup extends StandardInclude {
     
     public RoleBlockerClueGroup(Set<Role> amnesiacTurnedInto) {
         super(new RoleBlockerInnerClueGroup(), amnesiacTurnedInto);
