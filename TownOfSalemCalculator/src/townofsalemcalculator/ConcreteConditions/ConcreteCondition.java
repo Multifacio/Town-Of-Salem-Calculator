@@ -28,10 +28,4 @@ public interface ConcreteCondition {
      * @return The Prioritized Condition that belongs to this Concrete Condition
      */
     public PrioritizedCondition getPrioritizedCondition(Set<ConcreteCondition> previousConditions);
-    
-    @Override
-    public boolean equals(Object o); //Used to define when Concrete Conditions are equal (to make it possible to put it in a Set)
-    
-    @Override
-    public int hashCode(); //Used to define what the hash code is of a Concrete Condition (to make it possible to put it in a Set)
 }
