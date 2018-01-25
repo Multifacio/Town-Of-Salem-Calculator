@@ -28,5 +28,5 @@ public interface ConcreteCondition {
      * @param previousConditions All concrete conditions that already have been executed
      * @return The Prioritized Condition that belongs to this Concrete Condition
      */
-    public PrioritizedCondition getPrioritizedCondition(Set<ConcreteCondition> previousConditions);
+    public PrioritizedCondition getPrioritizedCondition(List<ConcreteCondition> previousConditions);
 }
