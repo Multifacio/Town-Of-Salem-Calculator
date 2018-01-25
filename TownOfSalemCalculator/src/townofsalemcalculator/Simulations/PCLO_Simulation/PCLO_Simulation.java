@@ -57,7 +57,7 @@ public class PCLO_Simulation implements Simulation {
     }
     
     private List<PrioritizedCondition> convertConditions(List<ConcreteCondition> holds) {
-        Set<ConcreteCondition> currentHold = new HashSet(); //Contains all conditions before the newly added hold condition
+        List<ConcreteCondition> currentHold = new ArrayList(); //Contains all conditions before the newly added hold condition
         List<PrioritizedCondition> convertedConditions = new ArrayList(); //Contains all conditions that are converted
         for (ConcreteCondition cc : holds) { //Convert every condition to a prioritized condition
             convertedConditions.add(cc.getPrioritizedCondition(currentHold));
