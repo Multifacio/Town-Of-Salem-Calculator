@@ -1,5 +1,8 @@
 package townofsalemcalculator;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * All the different roles within Town Of Salem (which includes Town, Mafia and Neutral roles)
  * @author Multifacio
@@ -52,7 +55,7 @@ public enum Role {
         this.keyWords = keyWords;
     }
     
-    public String[] getKeyWords() {
-        return keyWords;
+    public List<String> getKeyWords() {
+        return Arrays.asList(keyWords);
     }
 }

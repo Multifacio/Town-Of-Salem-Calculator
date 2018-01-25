@@ -1,5 +1,6 @@
 package townofsalemcalculator.ConcreteConditions;
 
+import java.util.List;
 import java.util.Set;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PrioritizedCondition;
 
@@ -20,7 +21,7 @@ public interface ConcreteCondition {
      * Get the key words which can be searched for
      * @return The key words that belong to this condition
      */
-    public String[] keyWords();
+    public List<String> keyWords();
     
     /**
      * Convert the condition to the corresponding Prioritized Condition
