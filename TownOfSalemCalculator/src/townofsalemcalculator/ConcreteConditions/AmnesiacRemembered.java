@@ -34,7 +34,11 @@ public class AmnesiacRemembered implements ConcreteCondition {
     }
 
     @Override
-    public PrioritizedCondition getPrioritizedCondition(Set<ConcreteCondition> previousConditions) {
+    public PrioritizedCondition getPrioritizedCondition(List<ConcreteCondition> previousConditions) {
         return null;
+    }
+    
+    public Role getRole() {
+        return this.role;
     }
 }
