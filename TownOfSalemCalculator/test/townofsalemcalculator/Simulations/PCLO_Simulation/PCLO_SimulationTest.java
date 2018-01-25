@@ -19,6 +19,7 @@ import townofsalemcalculator.AbstractConditions.GameModusConditions.OldRankedPra
 import townofsalemcalculator.RoleGroup.ClueGroup.DetermineGroup.TownFriendlyNonCoven;
 import townofsalemcalculator.RoleGroup.CompositeRoleGroup;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
+import static townofsalemcalculator.Simulations.PCLO_Simulation.PriorityValues.TOP_PRIORITY;
 
 /**
  * The PCLO Simulation Test
@@ -29,7 +30,6 @@ import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 public class PCLO_SimulationTest {
     private final List<Player> players; //The list of all Players participating in a game
     private final List<StartCategory> startCategories; //The list of all Start Categories in a game
-    private static final double TOP_PRIORITY = 10000.0; //The priority of a prioritized claim that must always be true
     
     public PCLO_SimulationTest() {
         //Add the Player and Start Categories
@@ -53,14 +53,16 @@ public class PCLO_SimulationTest {
     public void testImpossibleTownSupportClaim() {       
         PCLO_Simulation sim = new PCLO_Simulation(players, startCategories);
         List<PrioritizedCondition> holds = new ArrayList();
-        holds.add(new PrioritizedCondition(new GameCondition(players, startCategories), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RankedPracticeGameModus(startCategories), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(5), Mayor), TOP_PRIORITY));
+        holds.add(new PrioritizedCondition(new GameCondition(players, startCategories), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RankedPracticeGameModus(startCategories), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(5), Mayor), TOP_PRIORITY.getValue()));
         holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Transporter, 1), 10000.0));
-        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(8), new IncludingDisguiser(new SingleRoleGroup(Escort))), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(9), new IncludingDisguiser(new SingleRoleGroup(Medium))), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Janitor, 1), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Blackmailer, 1), TOP_PRIORITY));
+        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(8), new IncludingDisguiser(new SingleRoleGroup(Escort))), 
+                TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(9), new IncludingDisguiser(new SingleRoleGroup(Medium))), 
+                TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Janitor, 1), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Blackmailer, 1), TOP_PRIORITY.getValue()));
         
         AbstractCondition check = new RoleKnownOfPlayer(players.get(3), Medium);
         double likelihood = sim.doSimulationWithPrioritizedConditions(check, holds);
@@ -74,23 +76,23 @@ public class PCLO_SimulationTest {
     public void testPossibleGame() {
         PCLO_Simulation sim = new PCLO_Simulation(players, startCategories);
         List<PrioritizedCondition> holds = new ArrayList();
-        holds.add(new PrioritizedCondition(new GameCondition(players, startCategories), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RankedPracticeGameModus(startCategories), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(0), Bodyguard), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(1), Witch), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(2), Mafioso), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(3), Consort), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(4), Mayor), TOP_PRIORITY));
+        holds.add(new PrioritizedCondition(new GameCondition(players, startCategories), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RankedPracticeGameModus(startCategories), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(0), Bodyguard), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(1), Witch), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(2), Mafioso), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(3), Consort), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(4), Mayor), TOP_PRIORITY.getValue()));
         
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(5), Sheriff), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(6), Werewolf), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(7), Consigliere), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(8), Godfather), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(9), Investigator), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(10), Escort), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(11), Jailor), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(12), Escort), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(13), Spy), TOP_PRIORITY));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(5), Sheriff), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(6), Werewolf), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(7), Consigliere), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(8), Godfather), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(9), Investigator), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(10), Escort), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(11), Jailor), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(12), Escort), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(13), Spy), TOP_PRIORITY.getValue()));
         
         AbstractCondition check = new RoleKnownOfPlayer(players.get(14), Vigilante);
         double claimLikelihood = sim.doSimulationWithPrioritizedConditions(check, holds);
@@ -114,17 +116,17 @@ public class PCLO_SimulationTest {
         secondInvestResult.addRoleGroup(new SingleRoleGroup(Blackmailer));
         secondInvestResult.addRoleGroup(new SingleRoleGroup(Jailor));
         
-        holds.add(new PrioritizedCondition(new GameCondition(players, startCategories), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new OldRankedPracticeGameModus(startCategories), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(1), Investigator), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(0), firstInvestResult), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, SerialKiller, 1), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(12), Retributionist), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(14), Medium), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(5), secondInvestResult), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(5), Jailor), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(9), Survivor), TOP_PRIORITY));
-        holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Vigilante, 1), TOP_PRIORITY));
+        holds.add(new PrioritizedCondition(new GameCondition(players, startCategories), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new OldRankedPracticeGameModus(startCategories), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(1), Investigator), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(0), firstInvestResult), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, SerialKiller, 1), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(12), Retributionist), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(14), Medium), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new EitherRoleForRoleSelecter(players.get(5), secondInvestResult), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(5), Jailor), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new RoleKnownOfPlayer(players.get(9), Survivor), TOP_PRIORITY.getValue()));
+        holds.add(new PrioritizedCondition(new MinimumRoleAmount(startCategories, Vigilante, 1), TOP_PRIORITY.getValue()));
         
         
         AbstractCondition check = new EitherRoleForRoleSelecter(players.get(0), new TownFriendlyNonCoven(new HashSet()));
