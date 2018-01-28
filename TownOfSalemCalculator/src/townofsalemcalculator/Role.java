@@ -23,7 +23,7 @@ public enum Role {
     Sheriff(new String[]{"Sheriff"}),
     Spy(new String[]{"Spy"}),
     Transporter(new String[]{"Transporter"}),
-    VampireHunter(new String[]{"Vampire", "Hunter", "VH"}),
+    VampireHunter(new String[]{"Vampire", "Hunter", "VampireHunter", "VH"}),
     Veteran(new String[]{"Veteran"}),
     Vigilante(new String[]{"Vigilante"}),
     
@@ -43,7 +43,7 @@ public enum Role {
     Arsonist(new String[]{"Arsonist"}),
     Executioner(new String[]{"Executioner"}),
     Jester(new String[]{"Jester"}),
-    SerialKiller(new String[]{"Serial", "Killer", "SK"}),
+    SerialKiller(new String[]{"Serial", "Killer", "SerialKiller", "SK"}),
     Survivor(new String[]{"Survivor"}),
     Vampire(new String[]{"Vampire"}),
     Werewolf(new String[]{"Werewolf", "WW"}),
