@@ -31,7 +31,7 @@ public class Cleaned implements ConcreteCondition {
     
     @Override
     public String getCondition() {
-        return "Someone was cleaned";
+        return "Someone was cleaned (we could not determine its role)";
     }
 
     @Override
