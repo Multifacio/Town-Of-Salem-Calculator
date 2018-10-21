@@ -5,13 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import townofsalemcalculator.AbstractConditions.AbstractCondition;
-import townofsalemcalculator.AbstractConditions.AdvancedConditions.EitherRoleForRoleSelecter;
-import townofsalemcalculator.ConcreteConditions.ConcreteCondition;
+import townofsalemcalculator.Conditions.Abstract.AdvancedConditions.EitherRoleForRoleSelecter;
 import townofsalemcalculator.GameModus;
 import townofsalemcalculator.Role;
-import townofsalemcalculator.RoleGroup.ClueGroup.DetermineGroup.TownFriendlyNonCoven;
+import townofsalemcalculator.Conditions.RoleGroup.ClueGroup.DetermineGroup.TownFriendlyNonCoven;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_Simulation;
 import townofsalemcalculator.Simulations.Simulation;
+import townofsalemcalculator.Conditions.Condition;
 
 /**
  * A Game contains all information about a Game of Town of Salem
@@ -25,7 +25,7 @@ public class Game {
     private List<StartCategory> startCategories; //The list of all Start Categories in a game
     private Simulation simulation; //The simulation that will be used to check the likelihood of conditions
     
-    private List<ConcreteCondition> conditions; //The list of all conditions that are known to be true
+    private List<Condition> conditions; //The list of all conditions that are known to be true
     private Map<Player, Double> goodLikelihood; //Contains the likelihood that a player is not the opposite of town
     private Map<Player, Double> claimLikelihood; //Contains the likelihood of a claim for each player
     
@@ -61,7 +61,7 @@ public class Game {
      * Add a new condition to the Game
      * @param condition The condition which is known to be true about the game
      */
-    public void addCondition(ConcreteCondition condition) {
+    public void addCondition(Condition condition) {
         conditions.add(condition);
     }
     
@@ -69,9 +69,9 @@ public class Game {
         class MultithreadedSimulation implements Runnable {
             private double likelihood;
             private final AbstractCondition check;
-            private final List<ConcreteCondition> holds;
+            private final List<Condition> holds;
             
-            public MultithreadedSimulation(AbstractCondition check, List<ConcreteCondition> holds) {
+            public MultithreadedSimulation(AbstractCondition check, List<Condition> holds) {
                 this.check = check;
                 this.holds = holds;
             }

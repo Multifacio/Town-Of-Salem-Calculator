@@ -1,5 +1,7 @@
 package townofsalemcalculator.RoleGroup;
 
+import townofsalemcalculator.Conditions.RoleGroup.RoleGroup;
+import townofsalemcalculator.Conditions.RoleGroup.AllRolesNonCoven;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

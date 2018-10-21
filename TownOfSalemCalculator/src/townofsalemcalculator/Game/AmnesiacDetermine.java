@@ -3,9 +3,9 @@ package townofsalemcalculator.Game;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import townofsalemcalculator.ConcreteConditions.AmnesiacRemembered;
-import townofsalemcalculator.ConcreteConditions.ConcreteCondition;
+import townofsalemcalculator.Conditions.Concrete.AmnesiacRemembered;
 import townofsalemcalculator.Role;
+import townofsalemcalculator.Conditions.Condition;
 
 /**
  * Amnesiac Determine will determine which roles the Amnesiac has remembered
@@ -14,9 +14,9 @@ import townofsalemcalculator.Role;
  * @since 2017-1-25
  */
 public class AmnesiacDetermine {
-    public static Set<Role> getRememberedRoles(List<ConcreteCondition> previousConditions) {
+    public static Set<Role> getRememberedRoles(List<Condition> previousConditions) {
         Set<Role> amnesiacTurnedInto = new HashSet();
-        for(ConcreteCondition cc : previousConditions) {
+        for(Condition cc : previousConditions) {
             //For each concrete condition check whether it is an Amnesiac Remembered condition
             if (cc instanceof AmnesiacRemembered) {
                 //For every Amnesiac concrete condition add the role

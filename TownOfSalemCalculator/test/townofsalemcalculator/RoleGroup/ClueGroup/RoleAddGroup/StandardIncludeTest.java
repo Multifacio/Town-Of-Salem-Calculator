@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import townofsalemcalculator.Role;
 import static townofsalemcalculator.Role.*;
-import townofsalemcalculator.RoleGroup.RoleGroup;
+import townofsalemcalculator.Conditions.RoleGroup.RoleGroup;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 
 /**

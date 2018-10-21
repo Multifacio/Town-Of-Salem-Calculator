@@ -7,7 +7,7 @@ import townofsalemcalculator.Comparison;
 import static townofsalemcalculator.Comparison.*;
 import townofsalemcalculator.Counter;
 import townofsalemcalculator.Role;
-import townofsalemcalculator.RoleGroup.RoleGroup;
+import townofsalemcalculator.Conditions.RoleGroup.RoleGroup;
 import townofsalemcalculator.Game.RoleSelecter;
 
 public class PCLO_Condition_RoleGroupAmount implements PCLO_ConditionImplementation {

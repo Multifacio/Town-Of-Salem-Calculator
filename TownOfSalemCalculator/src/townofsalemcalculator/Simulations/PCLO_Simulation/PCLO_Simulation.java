@@ -9,11 +9,11 @@ import scpsolver.problems.LPWizard;
 import townofsalemcalculator.Counter;
 import townofsalemcalculator.Game.Player;
 import townofsalemcalculator.Role;
-import townofsalemcalculator.RoleGroup.AllRoles;
+import townofsalemcalculator.Conditions.RoleGroup.AllRoles;
 import townofsalemcalculator.Game.StartCategory;
 import townofsalemcalculator.AbstractConditions.AbstractCondition;
-import townofsalemcalculator.ConcreteConditions.ConcreteCondition;
 import townofsalemcalculator.Simulations.Simulation;
+import townofsalemcalculator.Conditions.Condition;
 
 /**
  * A Prioritized AbstractCondition Lineair Optimization simulation. It will determine how likely it is that a condition is true, based on other prioritized conditions.
@@ -51,15 +51,15 @@ public class PCLO_Simulation implements Simulation {
     }
     
     @Override
-    public double doSimulation(AbstractCondition check, List<ConcreteCondition> holds) {
+    public double doSimulation(AbstractCondition check, List<Condition> holds) {
         List<PrioritizedCondition> convertedConditions = convertConditions(holds); //Convert the conditions first to appropriate format
         return doSimulationWithPrioritizedConditions(check, convertedConditions); //Do the simulation with the conditions of appropriate format
     }
     
-    private List<PrioritizedCondition> convertConditions(List<ConcreteCondition> holds) {
-        List<ConcreteCondition> currentHold = new ArrayList(); //Contains all conditions before the newly added hold condition
+    private List<PrioritizedCondition> convertConditions(List<Condition> holds) {
+        List<Condition> currentHold = new ArrayList(); //Contains all conditions before the newly added hold condition
         List<PrioritizedCondition> convertedConditions = new ArrayList(); //Contains all conditions that are converted
-        for (ConcreteCondition cc : holds) { //Convert every condition to a prioritized condition
+        for (Condition cc : holds) { //Convert every condition to a prioritized condition
             convertedConditions.add(cc.getPrioritizedCondition(currentHold));
             currentHold.add(cc);
         }

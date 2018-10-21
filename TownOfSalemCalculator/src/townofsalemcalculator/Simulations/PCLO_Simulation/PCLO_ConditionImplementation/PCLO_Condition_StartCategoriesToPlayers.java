@@ -6,7 +6,7 @@ import scpsolver.problems.LPWizardConstraint;
 import townofsalemcalculator.Counter;
 import townofsalemcalculator.Game.Player;
 import townofsalemcalculator.Role;
-import townofsalemcalculator.RoleGroup.AllRoles;
+import townofsalemcalculator.Conditions.RoleGroup.AllRoles;
 import townofsalemcalculator.Game.RoleSelecter;
 import townofsalemcalculator.Game.StartCategory;
 

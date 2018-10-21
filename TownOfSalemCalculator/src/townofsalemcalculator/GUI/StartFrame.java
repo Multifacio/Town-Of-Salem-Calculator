@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import javax.swing.JFrame;
 import townofsalemcalculator.Role;
-import townofsalemcalculator.RoleGroup.AllRoles;
+import townofsalemcalculator.Conditions.RoleGroup.AllRoles;
 
 /**
  * The Frame that is showed at the start of this program

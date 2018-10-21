@@ -1,23 +1,23 @@
 package townofsalemcalculator.Simulations.PCLO_Simulation;
 
-import townofsalemcalculator.AbstractConditions.AdvancedConditions.MinimumRoleAmount;
-import townofsalemcalculator.AbstractConditions.AdvancedConditions.RoleKnownOfPlayer;
-import townofsalemcalculator.AbstractConditions.AdvancedConditions.GameCondition;
-import townofsalemcalculator.AbstractConditions.AdvancedConditions.EitherRoleForRoleSelecter;
+import townofsalemcalculator.Conditions.Abstract.AdvancedConditions.MinimumRoleAmount;
+import townofsalemcalculator.Conditions.Abstract.AdvancedConditions.RoleKnownOfPlayer;
+import townofsalemcalculator.Conditions.Abstract.AdvancedConditions.GameCondition;
+import townofsalemcalculator.Conditions.Abstract.AdvancedConditions.EitherRoleForRoleSelecter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import townofsalemcalculator.AbstractConditions.GameModusConditions.RankedPracticeGameModus;
+import townofsalemcalculator.Conditions.Abstract.GameModusConditions.RankedPracticeGameModus;
 import townofsalemcalculator.Game.Player;
 import static townofsalemcalculator.Role.*;
-import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.IncludingDisguiser;
+import townofsalemcalculator.Conditions.RoleGroup.ClueGroup.RoleAddGroup.IncludingDisguiser;
 import townofsalemcalculator.Game.StartCategory;
 import townofsalemcalculator.AbstractConditions.AbstractCondition;
-import townofsalemcalculator.AbstractConditions.GameModusConditions.OldRankedPracticeGameModus;
-import townofsalemcalculator.RoleGroup.ClueGroup.DetermineGroup.TownFriendlyNonCoven;
-import townofsalemcalculator.RoleGroup.CompositeRoleGroup;
+import townofsalemcalculator.Conditions.Abstract.GameModusConditions.OldRankedPracticeGameModus;
+import townofsalemcalculator.Conditions.RoleGroup.ClueGroup.DetermineGroup.TownFriendlyNonCoven;
+import townofsalemcalculator.Conditions.RoleGroup.CompositeRoleGroup;
 import townofsalemcalculator.RoleGroup.SingleRoleGroup;
 import static townofsalemcalculator.Simulations.PCLO_Simulation.PriorityValues.TOP_PRIORITY;
 
