@@ -2,7 +2,7 @@ package townofsalemcalculator.Conditions.Abstract.BasicConditions;
 
 import java.util.List;
 import townofsalemcalculator.Role;
-import townofsalemcalculator.Game.RoleSelecter;
+import townofsalemcalculator.Simulation.RoleSelecter;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_ConditionImplementation;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PCLO_ConditionImplementation.PCLO_Condition_RoleRoleDependency;
 import townofsalemcalculator.AbstractConditions.AbstractCondition;

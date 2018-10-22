@@ -1,6 +1,6 @@
 package townofsalemcalculator.Conditions;
 
-import townofsalemcalculator.Simulations.Simulation;
+import townofsalemcalculator.Simulation.SimulationRun;
 
 /**
  * A Condition is a statement about the game which is true
@@ -10,8 +10,8 @@ import townofsalemcalculator.Simulations.Simulation;
  */
 public interface Condition {
     /**
-     * Use a condition in the simulation (the Simulation class will call this method)
-     * @param s The simulation class in which this condition is added
+     * Use a condition in the Simulation
+     * @param sr The simulation run instance in which this condition is added
      */
-    public void useCondition(Simulation s);
+    public void useCondition(SimulationRun sr);
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import townofsalemcalculator.Conditions.Abstract.BasicConditions.RoleRoleDependency;
 import townofsalemcalculator.Conditions.Abstract.BasicConditions.StartCategoriesToPlayers;
 import townofsalemcalculator.Conditions.Abstract.CompositeCondition;
-import townofsalemcalculator.Game.Player;
+import townofsalemcalculator.Player;
 import static townofsalemcalculator.Role.*;
 import townofsalemcalculator.Game.StartCategory;
 

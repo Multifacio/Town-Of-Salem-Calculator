@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import townofsalemcalculator.Conditions.Abstract.GameModusConditions.RankedPracticeGameModus;
-import townofsalemcalculator.Game.Player;
+import townofsalemcalculator.Player;
 import static townofsalemcalculator.Role.*;
 import townofsalemcalculator.Conditions.RoleGroup.ClueGroup.RoleAddGroup.IncludingDisguiser;
 import townofsalemcalculator.Game.StartCategory;

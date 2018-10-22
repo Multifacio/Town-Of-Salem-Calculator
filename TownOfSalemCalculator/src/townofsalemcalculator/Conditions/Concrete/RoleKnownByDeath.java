@@ -7,7 +7,7 @@ import townofsalemcalculator.AbstractConditions.AbstractCondition;
 import townofsalemcalculator.Conditions.Abstract.AdvancedConditions.EitherRoleForRoleSelecter;
 import townofsalemcalculator.Conditions.Condition;
 import townofsalemcalculator.Game.AmnesiacDetermine;
-import townofsalemcalculator.Game.Player;
+import townofsalemcalculator.Player;
 import townofsalemcalculator.Role;
 import townofsalemcalculator.RoleGroup.ClueGroup.KillingClueGroup.DeathClueGroup;
 import townofsalemcalculator.Simulations.PCLO_Simulation.PrioritizedCondition;

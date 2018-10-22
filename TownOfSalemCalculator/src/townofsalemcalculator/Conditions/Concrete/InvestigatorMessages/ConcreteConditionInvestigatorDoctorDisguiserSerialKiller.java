@@ -6,7 +6,7 @@ import java.util.Set;
 import townofsalemcalculator.AbstractConditions.AbstractCondition;
 import townofsalemcalculator.Conditions.Abstract.AdvancedConditions.EitherRoleForRoleSelecter;
 import townofsalemcalculator.Game.AmnesiacDetermine;
-import townofsalemcalculator.Game.Player;
+import townofsalemcalculator.Player;
 import townofsalemcalculator.Role;
 import static townofsalemcalculator.Role.Disguiser;
 import static townofsalemcalculator.Role.Doctor;

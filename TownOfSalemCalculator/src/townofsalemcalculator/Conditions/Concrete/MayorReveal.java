@@ -7,7 +7,7 @@ import townofsalemcalculator.AbstractConditions.AbstractCondition;
 import townofsalemcalculator.Conditions.Abstract.AdvancedConditions.EitherRoleForRoleSelecter;
 import townofsalemcalculator.Conditions.Condition;
 import townofsalemcalculator.Game.AmnesiacDetermine;
-import townofsalemcalculator.Game.Player;
+import townofsalemcalculator.Player;
 import townofsalemcalculator.Role;
 import static townofsalemcalculator.Role.Mayor;
 import townofsalemcalculator.Conditions.RoleGroup.ClueGroup.RoleAddGroup.StandardInclude;

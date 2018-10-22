@@ -2,7 +2,7 @@ package townofsalemcalculator.Conditions.Abstract.AdvancedConditions;
 
 import java.util.List;
 import townofsalemcalculator.Conditions.Abstract.CompositeCondition;
-import townofsalemcalculator.Game.Player;
+import townofsalemcalculator.Player;
 import townofsalemcalculator.Conditions.RoleGroup.AllRoles;
 import townofsalemcalculator.Game.StartCategory;
 
