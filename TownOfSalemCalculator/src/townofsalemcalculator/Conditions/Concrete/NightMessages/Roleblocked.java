@@ -2,31 +2,20 @@ package townofsalemcalculator.Conditions.Concrete.NightMessages;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import townofsalemcalculator.AbstractConditions.AbstractCondition;
-import townofsalemcalculator.Conditions.Abstract.AdvancedConditions.MinimumRoleAmount;
-import townofsalemcalculator.Game.AmnesiacDetermine;
-import townofsalemcalculator.Game.StartCategory;
-import townofsalemcalculator.Role;
+import townofsalemcalculator.Conditions.RoleGroup.CompositeRoleGroup;
 import static townofsalemcalculator.Role.Consort;
 import static townofsalemcalculator.Role.Escort;
-import townofsalemcalculator.Conditions.RoleGroup.ClueGroup.JailorEscortClueGroup.RoleBlockerClueGroup;
-import townofsalemcalculator.RoleGroup.ClueGroup.RoleAddGroup.StandardInclude;
-import townofsalemcalculator.RoleGroup.SingleRoleGroup;
-import townofsalemcalculator.Simulations.PCLO_Simulation.PrioritizedCondition;
-import static townofsalemcalculator.Simulations.PCLO_Simulation.PriorityValues.TOP_PRIORITY;
 
 /**
  * The Concrete Condition that you were roleblocked
  * @author Multifacio
- * @version 1.0
+ * @version 1.1
  * @since 2017-1-28
  */
-public class Roleblocked implements Condition {
-    private final List<StartCategory> startCategories;
+public class Roleblocked extends NightMessage {
     
-    public Roleblocked(List<StartCategory> startCategories) {
-        this.startCategories = startCategories;
+    public Roleblocked() {
+        super(new RoleBlockerGroup());
     }
     
     @Override
@@ -41,11 +30,11 @@ public class Roleblocked implements Condition {
         keyWords.addAll(Consort.getKeyWords());
         return keyWords;
     }
-
-    @Override
-    public PrioritizedCondition getPrioritizedCondition(List<Condition> previousConditions) {
-        Set<Role> amnesiacTurnedInto = AmnesiacDetermine.getRememberedRoles(previousConditions); //Get all roles the Amnesiac has turned into
-        AbstractCondition hold = new MinimumRoleAmount(startCategories, new RoleBlockerClueGroup(amnesiacTurnedInto), 1); //The condition which needs to hold
-        return new PrioritizedCondition(hold, TOP_PRIORITY.getValue());
+    
+    static class RoleBlockerGroup extends CompositeRoleGroup {    
+        public RoleBlockerGroup() {
+            addRoleGroup(new townofsalemcalculator.Conditions.RoleGroup.SingleRoleGroup(Escort));
+            addRoleGroup(new townofsalemcalculator.Conditions.RoleGroup.SingleRoleGroup(Consort));
+        }
     }
 }

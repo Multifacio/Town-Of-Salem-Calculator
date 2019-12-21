@@ -1,35 +1,54 @@
 package townofsalemcalculator.Conditions.Abstract.AdvancedConditions;
 
-import java.util.List;
-import townofsalemcalculator.Conditions.Abstract.BasicConditions.RoleRoleDependency;
-import townofsalemcalculator.Conditions.Abstract.BasicConditions.StartCategoriesToPlayers;
-import townofsalemcalculator.Conditions.Abstract.CompositeCondition;
+import java.util.HashSet;
+import org.chocosolver.solver.Model;
+import org.chocosolver.solver.variables.BoolVar;
+import townofsalemcalculator.Conditions.Abstract.BasicConditions.PlayerCondition;
+import townofsalemcalculator.Conditions.Abstract.BasicConditions.StartCategoryToPlayer;
+import townofsalemcalculator.Conditions.Abstract.BasicConditions.VampireHunterCondition;
+import townofsalemcalculator.Conditions.Abstract.InheritConditions.CompositeCondition;
+import townofsalemcalculator.Conditions.Condition;
+import townofsalemcalculator.GameModus;
 import townofsalemcalculator.Player;
-import static townofsalemcalculator.Role.*;
-import townofsalemcalculator.Game.StartCategory;
+import townofsalemcalculator.Role;
+import townofsalemcalculator.Simulation.SimulationRun;
 
 /**
  * All conditions that hold in every Town of Salem game are included here
  * @author Multifacio
- * @version 1.0
+ * @version 1.1
  * @since 2018-1-1
  */
 public final class GameCondition extends CompositeCondition {
-    public GameCondition(List<Player> players, List<StartCategory> startCategories) {
-        //Standard Conditions
-        addCondition(new EveryoneExactly1Role(players, startCategories)); //All players and role categories have exactly 1 role
-        addCondition(new StartCategoriesToPlayers(players, startCategories)); //All players have to get a categorie
+    public GameCondition(GameModus gameModus, Player yourself, Role yourRole, int playerAmount) {
+        addCondition(new InitializeCondition(playerAmount));
+        addCondition(new PlayerCondition());
+        addCondition(new StartCategoryToPlayer());
+        addCondition(new GameModusCondition(gameModus));
+        addCondition(new RoleKnownOfPlayer(yourself, yourRole));
+        addCondition(new AllUniqueness());
+        addCondition(new VampireHunterCondition());
+    }
+    
+    class InitializeCondition implements Condition {
+        private final int playerAmount;
         
-        //Role Uniqueness Conditions
-        addCondition(new RoleUniqueness(startCategories, Jailor));
-        addCondition(new RoleUniqueness(startCategories, Mayor));
-        addCondition(new RoleUniqueness(startCategories, Retributionist));
-        addCondition(new RoleUniqueness(startCategories, Veteran));
-        addCondition(new RoleUniqueness(startCategories, Godfather));
-        addCondition(new RoleUniqueness(startCategories, Mafioso));
-        addCondition(new RoleUniqueness(startCategories, Werewolf));
+        public InitializeCondition(int playerAmount) {
+            this.playerAmount = playerAmount;
+        }
         
-        //Vampire Hunter implies Vampire
-        addCondition(new RoleRoleDependency(startCategories, VampireHunter, Vampire));
+        @Override
+        public void useCondition(SimulationRun sr) {
+            sr.model = new Model("Town Of Salem Game");
+            int roleAmount = Role.values().length;
+            sr.amnesiacDetermine = new HashSet();
+            sr.playerRole = new BoolVar[playerAmount][roleAmount];
+            sr.startCategoryRole = new BoolVar[playerAmount][roleAmount];
+            for (int i = 0; i < playerAmount; i++) {
+                for (int j = 0; j < roleAmount; j++) {
+                    sr.playerRole[i][j] = sr.model.boolVar();
+                }
+            }
+        }    
     }
 }

@@ -2,11 +2,10 @@ package townofsalemcalculator.Conditions.Concrete;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import townofsalemcalculator.Conditions.Condition;
 import townofsalemcalculator.Role;
 import static townofsalemcalculator.Role.Amnesiac;
-import townofsalemcalculator.Simulations.PCLO_Simulation.PrioritizedCondition;
+import townofsalemcalculator.Simulation.SimulationRun;
+import townofsalemcalculator.Conditions.SearchableCondition;
 
 /**
  * The Concrete Condition that an Amnesiac remembered who he was
@@ -14,7 +13,7 @@ import townofsalemcalculator.Simulations.PCLO_Simulation.PrioritizedCondition;
  * @version 1.0
  * @since 2017-1-25
  */
-public class AmnesiacRemembered implements Condition {
+public class AmnesiacRemembered implements SearchableCondition {
     private final Role role;
     
     public AmnesiacRemembered(Role role) {
@@ -35,11 +34,7 @@ public class AmnesiacRemembered implements Condition {
     }
 
     @Override
-    public PrioritizedCondition getPrioritizedCondition(List<Condition> previousConditions) {
-        return null;
-    }
-    
-    public Role getRole() {
-        return this.role;
+    public void useCondition(SimulationRun sr) {
+        sr.amnesiacDetermine.add(role);
     }
 }

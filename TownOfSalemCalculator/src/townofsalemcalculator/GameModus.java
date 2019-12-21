@@ -8,6 +8,7 @@ package townofsalemcalculator;
  */
 public enum GameModus {
     Classic,
+    OldRankedPractice,
     RankedPractice,
-    OldRankedPractice;
+    Ranked;
 }
