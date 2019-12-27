@@ -39,7 +39,7 @@ class PlayerIsRoleCondition(Condition):
             if not cr.isdisjoint(self.roles):
                 new_state = state.copy()
                 new_roles = cr.intersection(self.roles)
-                new_state.categoryRoles[i] = new_roles
+                del new_state.categoryRoles[i]
                 new_state.playerRoles[self.player_id] = new_roles
                 new_states.append(new_state)
         return new_states

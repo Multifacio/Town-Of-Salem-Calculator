@@ -13,20 +13,15 @@ class Gamestate:
     Attributes:
         categoryRoles (List[Set[Role]]): A list of with sets of roles which can still be selected by a player.
         conditions (List[Condition]): The list of conditions which must hold on this Gamestate.
-        amnesiacRemembered (Set[Role]): All the roles remembered by an Amnesiac.
-        playerRoles (Dict[int, Union[Set[Role], None]]): A dictionary where the keys are integers representing the player id and
-        the values are possible roles which this player still can become. If a value for a given key is None then the
-        player haven't yet selected a start category.
+        playerRoles (Dict[int, Union[Set[Role], None]]): A dictionary where the keys are integers representing the
+        player id and the values are possible roles which this player still can become. If a value for a given key is
+        None then the player haven't yet selected a start category.
     """
     categoryRoles: List[Set[Role]]
     conditions: List[Condition]
-    amnesiacRemembered: Set[Role] = None
     playerRoles: Dict[int, Union[Set[Role], None]] = None
 
     def __post_init__(self):
-        if self.amnesiacRemembered is None:
-            self.amnesiacRemembered = set()
-
         if self.playerRoles is None:
             self.playerRoles = dict()
             for i in range(1, len(self.categoryRoles) + 1):
@@ -38,11 +33,10 @@ class Gamestate:
         Returns:
             A copy of this Gamesample object without the first condition.
         """
-        ar_copy = self.amnesiacRemembered.copy()
         cr_copy = [set.copy() for set in self.categoryRoles]
         pr_copy = dict([(key, None if set is None else set.copy()) for key, set in self.playerRoles.items()])
         con_copy = self.conditions[1:]
-        return Gamestate(cr_copy, con_copy, ar_copy, pr_copy)
+        return Gamestate(cr_copy, con_copy, pr_copy)
 
     def count_combinations(self) -> int:
         """ Count the number of possible Gamestates (with all values set) given the evidence.
