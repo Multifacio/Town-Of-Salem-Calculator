@@ -48,7 +48,6 @@ class AtLeastCondition(Condition):
                 new_state = self.__state_combination(state, options, set(comb), opposite_roles)
                 if new_state is not None:
                     new_states.append(new_state)
-                    print(comb)
 
         return new_states
 
@@ -66,15 +65,15 @@ class AtLeastCondition(Condition):
             intersect_roles = self.roles if i in combination else opposite_roles
             is_player_role, index = option
             if is_player_role:
-                new_roles = new_state.playerRoles[i].intersection(intersect_roles)
+                new_roles = new_state.playerRoles[index].intersection(intersect_roles)
                 if new_roles:
-                    new_state.playerRoles[i] = new_roles
+                    new_state.playerRoles[index] = new_roles
                 else:
                     return None
             else:
-                new_roles = new_state.categoryRoles[i].intersection(intersect_roles)
+                new_roles = new_state.categoryRoles[index].intersection(intersect_roles)
                 if new_roles:
-                    new_state.categoryRoles[i] = new_roles
+                    new_state.categoryRoles[index] = new_roles
                 else:
                     return None
 
