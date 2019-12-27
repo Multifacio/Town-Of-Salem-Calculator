@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Set, List, Dict
+from typing import Set, List, Dict, Union
 from src.Concepts import Role
 from src.Conditions.Condition import Condition
 import math
@@ -14,14 +14,14 @@ class Gamestate:
         categoryRoles (List[Set[Role]]): A list of with sets of roles which can still be selected by a player.
         conditions (List[Condition]): The list of conditions which must hold on this Gamestate.
         amnesiacRemembered (Set[Role]): All the roles remembered by an Amnesiac.
-        playerRoles (Dict[int, Set[Role]]): A dictionary where the keys are integers representing the player id and
+        playerRoles (Dict[int, Union[Set[Role], None]]): A dictionary where the keys are integers representing the player id and
         the values are possible roles which this player still can become. If a value for a given key is None then the
         player haven't yet selected a start category.
     """
     categoryRoles: List[Set[Role]]
     conditions: List[Condition]
     amnesiacRemembered: Set[Role] = None
-    playerRoles: Dict[int, Set[Role]] = None
+    playerRoles: Dict[int, Union[Set[Role], None]] = None
 
     def __post_init__(self):
         if self.amnesiacRemembered is None:

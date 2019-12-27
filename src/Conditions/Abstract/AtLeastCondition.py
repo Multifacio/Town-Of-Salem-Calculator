@@ -1,7 +1,7 @@
 from __future__ import annotations
 from src.Conditions.Condition import Condition
 from src.Concepts.Rolegroup import Rolegroup as RG
-from typing import Set, List, Tuple, TYPE_CHECKING
+from typing import Set, List, Tuple, TYPE_CHECKING, Union
 import itertools as it
 if TYPE_CHECKING:
     from src.Mechanics.Gamestate import Gamestate
@@ -45,7 +45,10 @@ class AtLeastCondition(Condition):
         opposite_roles = RG.NC_ALL.difference(self.roles)
         for num in range(self.amount, len(options) + 1):
             for comb in it.combinations(range(len(options)), num):
-                new_states.append(self.__state_permutation(state, options, set(comb), opposite_roles))
+                new_state = self.__state_combination(state, options, set(comb), opposite_roles)
+                if new_state is not None:
+                    new_states.append(new_state)
+                    print(comb)
 
         return new_states
 
@@ -53,18 +56,27 @@ class AtLeastCondition(Condition):
         from src.Conditions.Abstract.AtMostCondition import AtMostCondition
         return AtMostCondition(self.roles, self.amount - 1)
 
-    def __state_permutation(self, state: Gamestate, options: List[Tuple[bool, int]], combination: Set[int],
-                            opposite_roles: Set[Role]) -> Gamestate:
-        """ Compute the corresponding state for a given permutation where the permutation are all the indices in the
-        option list that should be a subset of the set of roles given for this condition. """
+    def __state_combination(self, state: Gamestate, options: List[Tuple[bool, int]], combination: Set[int],
+                            opposite_roles: Set[Role]) -> Union[Gamestate, None]:
+        """ Compute the corresponding state for a given combination where the combination are all the indices in the
+        option list that should be a subset of the set of roles given for this condition. Returns None if the
+        combination is not valid. """
         new_state = state.copy()
         for i, option in enumerate(options):
             intersect_roles = self.roles if i in combination else opposite_roles
             is_player_role, index = option
             if is_player_role:
-                new_state.playerRoles[i].intersection_update(intersect_roles)
+                new_roles = new_state.playerRoles[i].intersection(intersect_roles)
+                if new_roles:
+                    new_state.playerRoles[i] = new_roles
+                else:
+                    return None
             else:
-                new_state.categoryRoles[i].intersection_update(intersect_roles)
+                new_roles = new_state.categoryRoles[i].intersection(intersect_roles)
+                if new_roles:
+                    new_state.categoryRoles[i] = new_roles
+                else:
+                    return None
 
         return new_state
 
