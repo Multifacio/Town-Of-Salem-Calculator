@@ -3,3 +3,5 @@ TownOfSalemCalculator/manifest.mf
 TownOfSalemCalculator/build.xml
 TownOfSalemCalculator/build/
 /src/__pycache__/
+/src/Concepts/__pycache__/*
+/.idea/*
