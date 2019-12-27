@@ -1,7 +1,39 @@
+from typing import Set
 from src.Concepts.Role import Role
 
 class Rolegroup:
-    """ A class with only Rolegroups variables (a set of roles) used in Gamemodi or conditions or predictions. """
+    """ A class with Rolegroups (a set of roles) variables and static functions that compute Rolegroups which are used
+    in Gamemodi or conditions or predictions. """
+
+    @staticmethod
+    def full_include(roles: Set[Role], amnesiacRemembered: Set[Role]) -> Set[Role]:
+        """ Include all roles that can become any role in a given set of roles and include the Disguiser.
+
+        Arguments:
+            roles (Set[Role]): A set of roles which we extend with the new roles.
+
+        Returns:
+            All the roles including the roles that can become any of these roles and including the Disguiser.
+        """
+        return Rolegroup.become_include(roles, amnesiacRemembered).union({Role.DISGUISER})
+
+    @staticmethod
+    def become_include(roles: Set[Role], amnesiacRemembered: Set[Role]) -> Set[Role]:
+        """ Include all roles that can become any role in a given set of roles.
+
+        Arguments:
+            roles (Set[Role]): A set of roles which we extend with the new roles.
+
+        Returns:
+            All the roles including the roles that can become any of these roles.
+        """
+        result = roles.copy()
+        for role in roles:
+            result.update(Rolegroup.NC_CAN_BECOME.get(role, set()))
+        if not result.isdisjoint(amnesiacRemembered):
+            result.add(Role.AMNESIAC)
+
+        return result
 
     # Gamemodus Rolegroups (rolegroups used in Gamemodi to fill in the start categories)
     # All Non-Coven Town Rolegroups
@@ -27,7 +59,7 @@ class Rolegroup:
     NC_ALL = set.union(NC_TOWN, NC_MAFIA, NC_NEUTRAL)
 
     # All Non-Coven can become Rolegroups (keys in the dictionary are the roles which another role can become, the
-    # values are the roles which can become this role)
+    # values are the roles which can directly/indirectly become this role)
     NC_CAN_BECOME = {Role.GODFATHER: {Role.MAFIOSO}, Role.MAFIOSO: NC_MAFIA.difference({Role.GODFATHER, Role.MAFIOSO}),
                      Role.VIGILANTE: {Role.VAMPIREHUNTER}, Role.JESTER: {Role.EXECUTIONER}}
 
