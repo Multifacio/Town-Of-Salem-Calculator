@@ -29,7 +29,7 @@ class Gamestate:
 
         if self.playerRoles is None:
             self.playerRoles = dict()
-            for i in range(1, len(self.conditions) + 1):
+            for i in range(1, len(self.categoryRoles) + 1):
                 self.playerRoles[i] = None
 
     def copy(self) -> Gamestate:

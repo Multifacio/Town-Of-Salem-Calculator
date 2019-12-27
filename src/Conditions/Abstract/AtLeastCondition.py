@@ -44,8 +44,8 @@ class AtLeastCondition(Condition):
         new_states = []
         opposite_roles = RG.NC_ALL.difference(self.roles)
         for num in range(self.amount, len(options) + 1):
-            for perm in it.permutations(range(len(options)), num):
-                new_states.append(self.__state_permutation(state, options, set(perm), opposite_roles))
+            for comb in it.combinations(range(len(options)), num):
+                new_states.append(self.__state_permutation(state, options, set(comb), opposite_roles))
 
         return new_states
 
@@ -53,14 +53,14 @@ class AtLeastCondition(Condition):
         from src.Conditions.Abstract.AtMostCondition import AtMostCondition
         return AtMostCondition(self.roles, self.amount - 1)
 
-    def __state_permutation(self, state: Gamestate, options: List[Tuple[bool, int]], permutation: Set[int],
+    def __state_permutation(self, state: Gamestate, options: List[Tuple[bool, int]], combination: Set[int],
                             opposite_roles: Set[Role]) -> Gamestate:
         """ Compute the corresponding state for a given permutation where the permutation are all the indices in the
         option list that should be a subset of the set of roles given for this condition. """
         new_state = state.copy()
         for i, option in enumerate(options):
-            intersect_roles = self.roles if i in permutation else opposite_roles
-            is_player_role, index = options
+            intersect_roles = self.roles if i in combination else opposite_roles
+            is_player_role, index = option
             if is_player_role:
                 new_state.playerRoles[i].intersection_update(intersect_roles)
             else:
