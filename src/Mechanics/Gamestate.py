@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import NamedTuple, Set, List, Dict
+from typing import Set, List, Dict
 from src.Concepts import Role
 from src.Conditions.Condition import Condition
 import math
@@ -28,6 +28,7 @@ class Gamestate:
             self.amnesiacRemembered = set()
 
         if self.playerRoles is None:
+            self.playerRoles = dict()
             for i in range(1, len(self.conditions) + 1):
                 self.playerRoles[i] = None
 
@@ -39,7 +40,7 @@ class Gamestate:
         """
         ar_copy = self.amnesiacRemembered.copy()
         cr_copy = [set.copy() for set in self.categoryRoles]
-        pr_copy = dict([(key, set.copy()) for key, set in self.playerRoles.items()])
+        pr_copy = dict([(key, None if set is None else set.copy()) for key, set in self.playerRoles.items()])
         con_copy = self.conditions[1:]
         return Gamestate(cr_copy, con_copy, ar_copy, pr_copy)
 
@@ -69,4 +70,5 @@ class Gamestate:
             if pr is not None:
                 count *= len(pr)
         return count
+
 

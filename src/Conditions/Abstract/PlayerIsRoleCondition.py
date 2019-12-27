@@ -1,9 +1,11 @@
+from __future__ import annotations
 from collections import Set
-from src.Concepts.Role import Role
 from src.Conditions.Condition import Condition
-from src.Mechanics.Gamestate import Gamestate
 from src.Concepts.Rolegroup import Rolegroup as RG
-from typing import List
+from typing import List, TYPE_CHECKING
+if TYPE_CHECKING:
+    from src.Mechanics.Gamestate import Gamestate
+    from src.Concepts.Role import Role
 
 class PlayerIsRoleCondition(Condition):
     """ The Player Is Role Condition means that a player should have a role in a given set of roles. """

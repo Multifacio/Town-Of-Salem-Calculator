@@ -1,8 +1,8 @@
-from typing import List
-from src.Mechanics.Gamestate import Gamestate
-from src.Conditions.Abstract.ORCondition import ORCondition
+from __future__ import annotations
+from typing import List, TYPE_CHECKING
 from src.Conditions.Condition import Condition
-import numpy as np
+if TYPE_CHECKING:
+    from src.Mechanics.Gamestate import Gamestate
 
 class ANDCondition(Condition):
     """ The AND Condition holds when all of the included conditions hold. """
@@ -20,9 +20,10 @@ class ANDCondition(Condition):
         # Return a new game state with all conditions included in this condition appended in front of the condition
         # list of that game state.
         new_state = state.copy()
-        new_state.conditions = self.conditions + state.conditions
+        new_state.conditions = self.conditions + new_state.conditions
         return [new_state]
 
     def opposite(self) -> Condition:
+        from src.Conditions.Abstract.ORCondition import ORCondition
         opposite_conditions = [condition.opposite() for condition in self.conditions]
         return ORCondition(opposite_conditions)

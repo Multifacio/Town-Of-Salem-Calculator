@@ -1,4 +1,3 @@
-from __future__ import annotations
 from aenum import Enum, NoAlias
 
 class Role(Enum):

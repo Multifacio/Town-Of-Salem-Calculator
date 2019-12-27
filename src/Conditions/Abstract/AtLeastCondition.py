@@ -1,10 +1,11 @@
-from typing import Set, List, Tuple
-from src.Conditions.Abstract.AtMostCondition import AtMostCondition
-from src.Mechanics.Gamestate import Gamestate
-from src.Concepts.Role import Role
+from __future__ import annotations
 from src.Conditions.Condition import Condition
 from src.Concepts.Rolegroup import Rolegroup as RG
+from typing import Set, List, Tuple, TYPE_CHECKING
 import itertools as it
+if TYPE_CHECKING:
+    from src.Mechanics.Gamestate import Gamestate
+    from src.Concepts.Role import Role
 
 class AtLeastCondition(Condition):
     """ The At Least Condition means that a set of roles should occur at least a given amount of times (n) between the
@@ -49,6 +50,7 @@ class AtLeastCondition(Condition):
         return new_states
 
     def opposite(self) -> Condition:
+        from src.Conditions.Abstract.AtMostCondition import AtMostCondition
         return AtMostCondition(self.roles, self.amount - 1)
 
     def __state_permutation(self, state: Gamestate, options: List[Tuple[bool, int]], permutation: Set[int],

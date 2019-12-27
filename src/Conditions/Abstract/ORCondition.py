@@ -1,8 +1,9 @@
-from typing import List
-from src.Mechanics.Gamestate import Gamestate
-from src.Conditions.Abstract.ANDCondition import ANDCondition
+from __future__ import annotations
+from typing import List, TYPE_CHECKING
 from src.Conditions.Condition import Condition
 import itertools as it
+if TYPE_CHECKING:
+    from src.Mechanics.Gamestate import Gamestate
 
 class ORCondition(Condition):
     """ The OR Condition holds when one of the included conditions hold. """
@@ -17,6 +18,7 @@ class ORCondition(Condition):
         self.conditions = conditions
 
     def fill_evidence(self, state: Gamestate) -> List[Gamestate]:
+        from src.Conditions.Abstract.ANDCondition import ANDCondition
         new_states = []
         for bool_sample in it.product([False, True], repeat = len(self.conditions)):
             if any(bool_sample):
@@ -27,5 +29,6 @@ class ORCondition(Condition):
         return new_states
 
     def opposite(self) -> Condition:
+        from src.Conditions.Abstract.ANDCondition import ANDCondition
         opposite_conditions = [condition.opposite() for condition in self.conditions]
         return ANDCondition(opposite_conditions)

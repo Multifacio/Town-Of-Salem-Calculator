@@ -1,9 +1,10 @@
-from typing import Set, List
-from src.Concepts.Role import Role
-from src.Conditions.Abstract.AtLeastCondition import AtLeastCondition
+from __future__ import annotations
 from src.Conditions.Condition import Condition
-from src.Mechanics.Gamestate import Gamestate
 from src.Concepts.Rolegroup import Rolegroup as RG
+from typing import Set, List, TYPE_CHECKING
+if TYPE_CHECKING:
+    from src.Mechanics.Gamestate import Gamestate
+    from src.Concepts.Role import Role
 
 class AtMostCondition(Condition):
     """ The At Most Condition means that a set of roles should occur at most a given amount of times (n) between the
@@ -21,6 +22,7 @@ class AtMostCondition(Condition):
 
     def fill_evidence(self, state: Gamestate) -> List[Gamestate]:
         # Convert this condition to an At Least Condition and return a game state with that new condition added.
+        from src.Conditions.Abstract.AtLeastCondition import AtLeastCondition
         converted_roles = RG.NC_ALL.difference(self.roles)
         converted_amount = len(state.playerRoles) - self.amount
         new_state = state.copy()
@@ -28,4 +30,5 @@ class AtMostCondition(Condition):
         return [new_state]
 
     def opposite(self) -> Condition:
+        from src.Conditions.Abstract.AtLeastCondition import AtLeastCondition
         return AtLeastCondition(self.roles, self.amount + 1)
