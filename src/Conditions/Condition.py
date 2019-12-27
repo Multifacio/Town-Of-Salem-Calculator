@@ -1,6 +1,7 @@
 from __future__ import annotations
-from src.Mechanics.Gamestate import Gamestate
-from typing import List
+from typing import List, TYPE_CHECKING
+if TYPE_CHECKING:
+    from src.Mechanics.Gamestate import Gamestate
 
 class Condition:
     """ A statement about the current Gamesituation which can either hold or not. """

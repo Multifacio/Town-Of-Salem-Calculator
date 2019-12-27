@@ -36,6 +36,8 @@ class Rolegroup:
     NC_TOWN_NON_HOSTILE = NC_ALL.difference(NC_TOWN_HOSTILE) # All roles that do not need to be killed to have town win
 
     # Condition Rolegroups (Rolegroups which are given by a condition)
+    # All Unique Roles in Town of Salem
+    NC_UNIQUE = {Role.JAILOR, Role.VETERAN, Role.MAYOR, Role.RETRIBUTIONIST, Role.GODFATHER, Role.MAFIOSO, Role.WEREWOLF}
     NC_IN_JAIL_GROUP = NC_ALL.difference({Role.JAILOR}) # All roles that can be jailed
     # All roles that can be roleblocked without resulting in a kill of the roleblocker
     NC_SUCCESSFUL_ROLEBLOCK = NC_ALL.difference({Role.SERIALKILLER})

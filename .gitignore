@@ -5,3 +5,5 @@ TownOfSalemCalculator/build/
 /src/__pycache__/
 /src/Concepts/__pycache__/*
 /.idea/*
+/src/Conditions/__pycache__/*
+/src/Mechanics/__pycache__/*

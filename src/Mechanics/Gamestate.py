@@ -1,27 +1,35 @@
 from __future__ import annotations
-
-import math
-from random import random
+from dataclasses import dataclass
 from typing import NamedTuple, Set, List, Dict
 from src.Concepts import Role
 from src.Conditions.Condition import Condition
+import math
 
-class Gamestate(NamedTuple):
+@dataclass
+class Gamestate:
     """ A current Gamestate after having set some/all of the player & category roles with the conditions that still
     should be applied on the Gamestate.
 
     Attributes:
-        amnesiacRemembered (Set[Role]): All the roles remembered by an Amnesiac.
         categoryRoles (List[Set[Role]]): A list of with sets of roles which can still be selected by a player.
+        conditions (List[Condition]): The list of conditions which must hold on this Gamestate.
+        amnesiacRemembered (Set[Role]): All the roles remembered by an Amnesiac.
         playerRoles (Dict[int, Set[Role]]): A dictionary where the keys are integers representing the player id and
         the values are possible roles which this player still can become. If a value for a given key is None then the
         player haven't yet selected a start category.
-        conditions (List[Condition]): The list of conditions which must hold on this Gamestate.
     """
-    amnesiacRemembered: Set[Role]
     categoryRoles: List[Set[Role]]
-    playerRoles: Dict[int, Set[Role]]
     conditions: List[Condition]
+    amnesiacRemembered: Set[Role] = None
+    playerRoles: Dict[int, Set[Role]] = None
+
+    def __post_init__(self):
+        if self.amnesiacRemembered is None:
+            self.amnesiacRemembered = set()
+
+        if self.playerRoles is None:
+            for i in range(1, len(self.conditions) + 1):
+                self.playerRoles[i] = None
 
     def copy(self) -> Gamestate:
         """ Make a deep copy of this Gamesample object with the first condition removed.
@@ -33,7 +41,7 @@ class Gamestate(NamedTuple):
         cr_copy = [set.copy() for set in self.categoryRoles]
         pr_copy = dict([(key, set.copy()) for key, set in self.playerRoles.items()])
         con_copy = self.conditions[1:]
-        return Gamestate(ar_copy, cr_copy, pr_copy, con_copy)
+        return Gamestate(cr_copy, con_copy, ar_copy, pr_copy)
 
     def count_combinations(self) -> int:
         """ Count the number of possible Gamestates (with all values set) given the evidence.
