@@ -44,14 +44,26 @@ class PlayerIsRoleCondition(Condition):
     def __category_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
         """ Fill in the possible roles of the player if there is no information about the role of the player. Hence we
         will select a category that should belong to this player. """
-        new_states = []
+
+        category_options = dict()
         for i, cr in enumerate(state.categoryRoles):
             if not cr.isdisjoint(self.roles):
-                new_state = state.copy()
-                new_roles = cr.intersection(self.roles)
-                del new_state.categoryRoles[i]
-                new_state.playerRoles[self.player_id] = new_roles
-                new_states.append(new_state)
+                cr = frozenset(cr)
+                if cr in category_options:
+                    co = category_options[cr]
+                    category_options[cr] = (co[0], co[1] + 1)
+                else:
+                    category_options[cr] = (i, 1)
+
+        new_states = []
+        for cr, occ in category_options.items():
+            i, multiplier = occ
+            new_state = state.copy()
+            new_roles = cr.intersection(self.roles)
+            del new_state.categoryRoles[i]
+            new_state.playerRoles[self.player_id] = new_roles
+            new_state.multiplier *= multiplier
+            new_states.append(new_state)
         return new_states
 
     def __player_fill_evidence(self, state: Gamestate) -> List[Gamestate]:

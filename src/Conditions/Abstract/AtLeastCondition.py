@@ -33,8 +33,8 @@ class AtLeastCondition(Condition):
         # Check which category can be filled in with this condition
         category_options = dict()
         for i, cr in enumerate(state.categoryRoles):
-            cr = frozenset(cr)
             if not self.roles.isdisjoint(cr):
+                cr = frozenset(cr)
                 if cr in category_options:
                     co = category_options[cr]
                     category_options[cr] = AtLeastSelector(False, co.index + [i], co.multiplier + 1)
