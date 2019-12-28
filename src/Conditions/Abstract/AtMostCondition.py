@@ -20,15 +20,21 @@ class AtMostCondition(Condition):
         self.roles = roles
         self.amount = amount
 
-    def fill_evidence(self, state: Gamestate) -> List[Gamestate]:
-        # Convert this condition to an At Least Condition and return a game state with that new condition added.
-        from src.Conditions.Abstract.AtLeastCondition import AtLeastCondition
-        converted_roles = RG.NC_ALL.difference(self.roles)
-        converted_amount = len(state.playerRoles) - self.amount
+    def valid_skip(self, state: Gamestate):
+        return self.__translated_condition(state).valid_skip(state)
+
+    def inner_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
         new_state = state.copy()
-        new_state.conditions.insert(0, AtLeastCondition(converted_roles, converted_amount))
+        new_state.conditions.insert(0, self.__translated_condition(state))
         return [new_state]
 
     def opposite(self) -> Condition:
         from src.Conditions.Abstract.AtLeastCondition import AtLeastCondition
         return AtLeastCondition(self.roles, self.amount + 1)
+
+    def __translated_condition(self, state: Gamestate) -> Condition:
+        """ Get the corresponding At Least Condition which has the same meaning as this At Most Condition. """
+        from src.Conditions.Abstract.AtLeastCondition import AtLeastCondition
+        converted_roles = RG.NC_ALL.difference(self.roles)
+        converted_amount = len(state.playerRoles) - self.amount
+        return AtLeastCondition(converted_roles, converted_amount)

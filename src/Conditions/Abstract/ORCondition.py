@@ -17,7 +17,13 @@ class ORCondition(Condition):
         """
         self.conditions = conditions
 
-    def fill_evidence(self, state: Gamestate) -> List[Gamestate]:
+    def valid_skip(self, state: Gamestate):
+        for con in self.conditions:
+            if con.valid_skip(state):
+                return True
+        return False
+
+    def inner_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
         from src.Conditions.Abstract.ANDCondition import ANDCondition
         new_states = []
         for bool_sample in it.product([False, True], repeat = len(self.conditions)):

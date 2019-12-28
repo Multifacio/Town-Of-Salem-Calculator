@@ -16,7 +16,13 @@ class ANDCondition(Condition):
         """
         self.conditions = conditions
 
-    def fill_evidence(self, state: Gamestate) -> List[Gamestate]:
+    def valid_skip(self, state: Gamestate):
+        for con in self.conditions:
+            if not con.valid_skip(state):
+                return False
+        return True
+
+    def inner_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
         # Return a new game state with all conditions included in this condition appended in front of the condition
         # list of that game state.
         new_state = state.copy()

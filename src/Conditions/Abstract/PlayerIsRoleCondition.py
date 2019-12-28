@@ -20,7 +20,17 @@ class PlayerIsRoleCondition(Condition):
         self.player_id = player_id
         self.roles = roles
 
-    def fill_evidence(self, state: Gamestate) -> List[Gamestate]:
+    def valid_skip(self, state: Gamestate):
+        pr = state.playerRoles[self.player_id]
+        if pr is None:
+            for cr in state.categoryRoles:
+                if not cr.issubset(self.roles):
+                    return False
+            return True
+        else:
+            return pr.issubset(self.roles)
+
+    def inner_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
         pr = state.playerRoles[self.player_id]
         if pr is None:
             return self.__category_fill_evidence(state)

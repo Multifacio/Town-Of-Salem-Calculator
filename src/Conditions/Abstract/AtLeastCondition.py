@@ -21,12 +21,10 @@ class AtLeastCondition(Condition):
         self.roles = roles
         self.amount = amount
 
-    def fill_evidence(self, state: Gamestate) -> List[Gamestate]:
-        # If the condition is valid (always satisfied) then just remove this condition from the state and return a list
-        # with only this state as element.
-        if self.__valid_count(state) >= self.amount:
-            return [state.copy()]
+    def valid_skip(self, state: Gamestate):
+        return self.__valid_count(state) >= self.amount
 
+    def inner_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
         # Check which category and game roles can be filled in with this condition.
         options = []
         for i, cr in enumerate(state.categoryRoles):
