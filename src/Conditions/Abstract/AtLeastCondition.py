@@ -1,16 +1,15 @@
 from __future__ import annotations
-
+from src.Concepts.Role import Role
+from src.Concepts.Rolegroup import Rolegroup as RG
+from src.Conditions.Condition import Condition
+from typing import Set, List, TYPE_CHECKING, Union, NamedTuple, FrozenSet
 import math
 
-from src.Conditions.Condition import Condition
-from src.Concepts.Rolegroup import Rolegroup as RG
-from typing import Set, List, Tuple, TYPE_CHECKING, Union, NamedTuple
-import itertools as it
 if TYPE_CHECKING:
     from src.Mechanics.Gamestate import Gamestate
     from src.Concepts.Role import Role
 
-AtLeastSelector = NamedTuple("AtLeastSelector", [("isPlayerRole", bool), ("index", Union[List[int], int]),
+AtLeastSelector = NamedTuple("AtLeastSelector", [("isPlayerRole", bool), ("index", Union[FrozenSet[Role], int]),
                                                  ("multiplier", int)])
 class AtLeastCondition(Condition):
     """ The At Least Condition means that a set of roles should occur at least a given amount of times (n) between the
@@ -30,40 +29,34 @@ class AtLeastCondition(Condition):
         return self.__valid_count(state) >= self.amount
 
     def inner_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
-        # Check which category can be filled in with this condition
-        category_options = dict()
-        for i, cr in enumerate(state.categoryRoles):
+        # Check which category and game roles can be filled in with this condition.
+        options = []
+        options_sum = 0
+        for cr, num in state.categoryRoles.items():
             if not self.roles.isdisjoint(cr):
-                cr = frozenset(cr)
-                if cr in category_options:
-                    co = category_options[cr]
-                    category_options[cr] = AtLeastSelector(False, co.index + [i], co.multiplier + 1)
-                else:
-                    category_options[cr] = AtLeastSelector(False, [i], 1)
+                options.append(AtLeastSelector(False, cr, num))
+                options_sum += num
 
-        # Check which game roles can be filled in with this condition.
-        options = list(category_options.values())
         for i, pr in state.playerRoles.items():
             if pr is not None and not self.roles.isdisjoint(pr):
                 options.append(AtLeastSelector(True, i, 1))
+                options_sum += 1
 
         opposite_roles = RG.NC_ALL.difference(self.roles)
-        return self.__all_combination(state, options, opposite_roles, [])
+        return self.__all_combination(state, options, opposite_roles, [], options_sum)
 
     def opposite(self) -> Condition:
         from src.Conditions.Abstract.AtMostCondition import AtMostCondition
         return AtMostCondition(self.roles, self.amount - 1)
 
     def __all_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: Set[Role],
-                          cur_comb: List[int]) -> List[Gamestate]:
+                          cur_comb: List[int], options_sum: int) -> List[Gamestate]:
         """ Determine all possible combinations for the given list of options (contains all possible category and player
         roles that can be filled in). """
-        index = len(cur_comb)
-        optimistic_comb = cur_comb + [options[i].multiplier for i in range(index, len(options))]
-        optimistic_count = sum(optimistic_comb)
-        if optimistic_count < self.amount:
+        if options_sum < self.amount:
             return []
         else:
+            index = len(cur_comb)
             if index == len(options):
                 new_state = self.__state_combination(state, options, opposite_roles, cur_comb)
                 if new_state is None:
@@ -72,8 +65,10 @@ class AtLeastCondition(Condition):
                     return [new_state]
             else:
                 new_states = []
-                for i in range(options[index].multiplier + 1):
-                    new_states += self.__all_combination(state, options, opposite_roles, cur_comb + [i])
+                max = options[index].multiplier
+                for i in range(max + 1):
+                    new_states += self.__all_combination(state, options, opposite_roles, cur_comb + [i],
+                                                         options_sum + i - max)
                 return new_states
 
     def __state_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: Set[Role],
@@ -92,27 +87,37 @@ class AtLeastCondition(Condition):
                 else:
                     return None
             else:
-                for i in option.index[:num]:
-                    new_roles = new_state.categoryRoles[i].intersection(self.roles)
-                    if new_roles:
-                        new_state.categoryRoles[i] = new_roles
+                _, cr, max = option
+                new_occ = new_state.categoryRoles[cr] - max
+                if new_occ == 0:
+                    del new_state.categoryRoles[cr]
+                else:
+                    new_state.categoryRoles[cr] = new_occ
+
+                if num > 0:
+                    nr = cr.intersection(self.roles)
+                    if nr:
+                        new_state.categoryRoles[nr] = new_state.categoryRoles.get(nr, 0) + num
                     else:
                         return None
-                for i in option.index[num:]:
-                    new_roles = new_state.categoryRoles[i].intersection(opposite_roles)
-                    if new_roles:
-                        new_state.categoryRoles[i] = new_roles
+
+                num = max - num
+                if num > 0:
+                    nor = cr.intersection(opposite_roles)
+                    if nor:
+                        new_state.categoryRoles[nor] = new_state.categoryRoles.get(nor, 0) + num
                     else:
                         return None
+
         new_state.multiplier *= multiplier
         return new_state
 
     def __valid_count(self, state: Gamestate) -> int:
         """ Compute how many players and categories will always satisfy this condition (are valid). """
         valid_count = 0
-        for cr in state.categoryRoles:
+        for cr, num in state.categoryRoles.items():
             if cr.issubset(self.roles):
-                valid_count += 1
+                valid_count += num
 
         for pr in state.playerRoles.values():
             if pr is not None and pr.issubset(self.roles):

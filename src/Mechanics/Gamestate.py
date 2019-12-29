@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Set, List, Dict, Union
+from typing import Set, List, Dict, Union, FrozenSet
 from src.Concepts import Role
 from src.Conditions.Condition import Condition
 import math
@@ -9,16 +9,17 @@ class Gamestate:
     should be applied on the Gamestate.
 
     Attributes:
-        categoryRoles (List[Set[Role]]): A list of with sets of roles which can still be selected by a player.
+        categoryRoles (Dict[FrozenSet[Role], int]): A dictionary with sets of roles as key which can still be selected
+        by a player and as integer how often it occurs.
         conditions (List[Condition]): The list of conditions which must hold on this Gamestate.
         playerRoles (Dict[int, Union[Set[Role], None]]): A dictionary where the keys are integers representing the
         player id and the values are possible roles which this player still can become. If a value for a given key is
         None then the player haven't yet selected a start category.
-        multiplier (int): How often this Gamestate counts (at the end of count_combinations function the result
-        will be multiplied by this multiplier value).
+        multiplier (int): How often this Gamestate counts (at the end of count_combinations function the result will be
+        multiplied by this multiplier value).
     """
 
-    def __init__(self, categoryRoles: List[Set[Role]], conditions: List[Condition],
+    def __init__(self, categoryRoles: Dict[FrozenSet[Role], int], conditions: List[Condition],
                  playerRoles: Dict[int, Union[Set[Role], None]], multiplier: int):
         """ Constructor of the Gamestate. Do not call this function! Call the create function if you want to create a
         new Gamestate and call the copy function if you want to copy a Gamestate. """
@@ -38,11 +39,16 @@ class Gamestate:
         Returns:
             The new fresh Gamestate with the given Gamemodus and the condition that should hold.
         """
+        categoryRoles = dict()
+        for cr in game_modus:
+            cr = frozenset(cr)
+            categoryRoles[cr] = categoryRoles.get(cr, 0) + 1
+
         playerRoles = dict()
         for i in range(1, len(game_modus) + 1):
             playerRoles[i] = None
 
-        return Gamestate(game_modus, [condition], playerRoles, 1)
+        return Gamestate(categoryRoles, [condition], playerRoles, 1)
 
     def copy(self) -> Gamestate:
         """ Make a deep copy of this Gamesample object with the first condition removed.
@@ -50,7 +56,7 @@ class Gamestate:
         Returns:
             A copy of this Gamesample object without the first condition.
         """
-        cr_copy = [set.copy() for set in self.categoryRoles]
+        cr_copy = self.categoryRoles.copy()
         pr_copy = dict([(key, None if set is None else set.copy()) for key, set in self.playerRoles.items()])
         con_copy = self.conditions[1:]
         return Gamestate(cr_copy, con_copy, pr_copy, self.multiplier)
@@ -74,9 +80,12 @@ class Gamestate:
 
     def __count_combinations_simple(self) -> int:
         """ Count the number of possible Gamestates in case there is no more evidence. """
-        count = math.factorial(len(self.categoryRoles))
-        for cr in self.categoryRoles:
-            count *= len(cr)
+        num_category_roles = 0
+        for i in self.categoryRoles.values():
+            num_category_roles += i
+        count = math.factorial(num_category_roles)
+        for cr, amount in self.categoryRoles.items():
+            count *= len(cr) ** amount
         for pr in self.playerRoles.values():
             if pr is not None:
                 count *= len(pr)
