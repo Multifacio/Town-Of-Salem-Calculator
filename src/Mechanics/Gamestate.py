@@ -20,7 +20,7 @@ class Gamestate:
     """
 
     def __init__(self, categoryRoles: Dict[FrozenSet[Role], int], conditions: List[Condition],
-                 playerRoles: Dict[int, Union[Set[Role], None]], multiplier: int):
+                 playerRoles: Dict[int, Union[FrozenSet[Role], None]], multiplier: int):
         """ Constructor of the Gamestate. Do not call this function! Call the create function if you want to create a
         new Gamestate and call the copy function if you want to copy a Gamestate. """
         self.categoryRoles = categoryRoles
@@ -57,7 +57,7 @@ class Gamestate:
             A copy of this Gamesample object without the first condition.
         """
         cr_copy = self.categoryRoles.copy()
-        pr_copy = dict([(key, None if set is None else set.copy()) for key, set in self.playerRoles.items()])
+        pr_copy = self.playerRoles.copy()
         con_copy = self.conditions[1:]
         return Gamestate(cr_copy, con_copy, pr_copy, self.multiplier)
 
