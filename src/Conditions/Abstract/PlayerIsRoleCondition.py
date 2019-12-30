@@ -31,6 +31,9 @@ class PlayerIsRoleCondition(Condition):
             return pr.issubset(self.roles)
 
     def inner_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
+        if self.valid_skip(state):
+            return [state.copy()]
+
         pr = state.playerRoles[self.player_id]
         if pr is None:
             return self.__category_fill_evidence(state)

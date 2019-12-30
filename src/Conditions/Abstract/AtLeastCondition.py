@@ -30,6 +30,9 @@ class AtLeastCondition(Condition):
 
     def inner_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
         # Check which category and game roles can be filled in with this condition.
+        if self.valid_skip(state):
+            return [state.copy()]
+
         options = []
         options_sum = 0
         for cr, num in state.categoryRoles.items():

@@ -25,6 +25,9 @@ class ORCondition(Condition):
 
     def inner_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
         from src.Conditions.Abstract.ANDCondition import ANDCondition
+        if self.valid_skip(state):
+            return [state.copy()]
+
         new_states = []
         for bool_sample in it.product([False, True], repeat = len(self.conditions)):
             if any(bool_sample):

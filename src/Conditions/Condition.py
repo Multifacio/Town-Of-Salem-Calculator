@@ -31,12 +31,7 @@ class Condition:
             A list of Gamestates which together form a partitioning for all possible Gamestates in which this condition
             holds. Returns an empty list when the condition cannot be satisfied anymore.
         """
-        if self.valid_skip(state):
-            return [state.copy()]
-        elif self.opposite().valid_skip(state):
-            return []
-        else:
-            return self.inner_fill_evidence(state)
+        return self.inner_fill_evidence(state)
 
     def inner_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
         pass
