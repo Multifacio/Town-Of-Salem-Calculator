@@ -15,4 +15,4 @@ class StartRole(PlayerIsRoleCondition):
             player_id (int): The id of the player of which we know his starting role.
             role (Role): The starting role of that player.
         """
-        super().__init__(player_id, {role})
+        super().__init__(player_id, frozenset({role}))

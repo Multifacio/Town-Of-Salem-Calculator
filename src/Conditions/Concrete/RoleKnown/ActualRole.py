@@ -1,4 +1,4 @@
-from typing import Set
+from typing import FrozenSet
 from src.Concepts.Role import Role
 from src.Conditions.Abstract.PlayerIsRoleCondition import PlayerIsRoleCondition
 from src.Concepts.Rolegroup import Rolegroup as RG
@@ -20,7 +20,7 @@ class ActualRole(PlayerIsRoleCondition):
     Disguiser. Also be careful when using this condition as evidence in case of claims even if the person looks very
     trustworthy, because there is still a chance that the persons could lie. This messes up your final results. """
 
-    def __init__(self, player_id: int, role: Role, amnesiacRemembered: Set[Role] = None):
+    def __init__(self, player_id: int, role: Role, amnesiacRemembered: FrozenSet[Role] = None):
         """" Constructor of the Actual Role condition.
 
         Arguments:
@@ -29,5 +29,5 @@ class ActualRole(PlayerIsRoleCondition):
             amnesiacRemembered (Set[Role]): All the roles remembered by an Amnesiac.
         """
         if amnesiacRemembered is None:
-            amnesiacRemembered = set()
-        super().__init__(player_id, RG.become_include({role}, amnesiacRemembered))
+            amnesiacRemembered = frozenset()
+        super().__init__(player_id, RG.become_include(frozenset({role}), amnesiacRemembered))

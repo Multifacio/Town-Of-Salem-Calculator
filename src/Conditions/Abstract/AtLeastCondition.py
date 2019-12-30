@@ -15,11 +15,11 @@ class AtLeastCondition(Condition):
     """ The At Least Condition means that a set of roles should occur at least a given amount of times (n) between the
     players which means that n players should have one of the roles in this set of roles. """
 
-    def __init__(self, roles: Set[Role], amount: int):
+    def __init__(self, roles: FrozenSet[Role], amount: int):
         """ Constructor of the At Least Condition.
 
         Arguments:
-            roles (Set[Role]): The set of roles which should occur at least a given amount of times.
+            roles (FrozenSet[Role]): The set of roles which should occur at least a given amount of times.
             amount (int): How often these roles should occur at least.
         """
         self.roles = roles
@@ -49,7 +49,7 @@ class AtLeastCondition(Condition):
         from src.Conditions.Abstract.AtMostCondition import AtMostCondition
         return AtMostCondition(self.roles, self.amount - 1)
 
-    def __all_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: Set[Role],
+    def __all_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
                           cur_comb: List[int], options_sum: int) -> List[Gamestate]:
         """ Determine all possible combinations for the given list of options (contains all possible category and player
         roles that can be filled in). """
@@ -71,7 +71,7 @@ class AtLeastCondition(Condition):
                                                          options_sum + i - max)
                 return new_states
 
-    def __state_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: Set[Role],
+    def __state_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
                             combination: List[int]) -> Union[Gamestate, None]:
         """ Compute the corresponding state for a given combination where the combination indicates which options
         should be selected. Returns None if the combination is not valid. """

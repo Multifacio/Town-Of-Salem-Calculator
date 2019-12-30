@@ -1,4 +1,4 @@
-from typing import Set
+from typing import FrozenSet
 from src.Concepts.Role import Role
 from src.Conditions.Abstract.ANDCondition import ANDCondition
 from src.Conditions.Abstract.AtLeastCondition import AtLeastCondition
@@ -9,7 +9,7 @@ class DeathRole(ANDCondition):
     """ The Death Role condition is used when you know someones actual role because he died either by hanging or because
     he was killed during the night and was not cleaned by a Janitor. Do not use this condition if someone was cleaned. """
 
-    def __init__(self, player_id: int, role: Role, amnesiacRemembered: Set[Role] = None):
+    def __init__(self, player_id: int, role: Role, amnesiacRemembered: FrozenSet[Role] = None):
         """" Constructor of the Death Role condition.
 
         Arguments:
@@ -18,10 +18,10 @@ class DeathRole(ANDCondition):
             amnesiacRemembered (Set[Role]): All the roles remembered by an Amnesiac.
         """
         if amnesiacRemembered is None:
-            amnesiacRemembered = set()
+            amnesiacRemembered = frozenset()
         super().__init__([InnerDeathRole(player_id, role, amnesiacRemembered),
-                          AtLeastCondition(RG.become_include({role}, amnesiacRemembered), 1)])
+                          AtLeastCondition(RG.become_include(frozenset({role}), amnesiacRemembered), 1)])
 
 class InnerDeathRole(PlayerIsRoleCondition):
-    def __init__(self, player_id: int, role: Role, amnesiacRemembered: Set[Role] = None):
-        super().__init__(player_id, RG.full_include({role}, amnesiacRemembered))
+    def __init__(self, player_id: int, role: Role, amnesiacRemembered: FrozenSet[Role] = None):
+        super().__init__(player_id, RG.full_include(frozenset({role}), amnesiacRemembered))

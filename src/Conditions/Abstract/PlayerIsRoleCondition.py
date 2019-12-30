@@ -2,7 +2,7 @@ from __future__ import annotations
 from collections import Set
 from src.Conditions.Condition import Condition
 from src.Concepts.Rolegroup import Rolegroup as RG
-from typing import List, TYPE_CHECKING
+from typing import List, TYPE_CHECKING, FrozenSet
 if TYPE_CHECKING:
     from src.Mechanics.Gamestate import Gamestate
     from src.Concepts.Role import Role
@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 class PlayerIsRoleCondition(Condition):
     """ The Player Is Role Condition means that a player should have a role in a given set of roles. """
 
-    def __init__(self, player_id: int, roles: Set[Role]):
+    def __init__(self, player_id: int, roles: FrozenSet[Role]):
         """ Constructor of the Player Is Role Condition.
 
         Arguments:
