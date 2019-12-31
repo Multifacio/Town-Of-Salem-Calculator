@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import Set, List, Dict, Union, FrozenSet
 from src.Concepts import Role
+from src.Conditions.Abstract.ANDCondition import ANDCondition
 from src.Conditions.Condition import Condition
 import math
 
@@ -48,7 +49,21 @@ class Gamestate:
         for i in range(1, len(game_modus) + 1):
             playerRoles[i] = None
 
-        return Gamestate(categoryRoles, [condition], playerRoles, 1)
+        return Gamestate(categoryRoles, Gamestate.__decompose_condition(condition), playerRoles, 1)
+
+    @staticmethod
+    def __decompose_condition(condition: Condition) -> List[Condition]:
+        """ Decompose all AND Conditions and sort the conditions in decreasing priority. """
+        decompose_queue = [condition]
+        conditions = []
+        while decompose_queue:
+            condition = decompose_queue.pop()
+            if isinstance(condition, ANDCondition):
+                decompose_queue.extend(condition.decompose())
+            else:
+                conditions.append(condition)
+        print(conditions)
+        return conditions
 
     def copy(self) -> Gamestate:
         """ Make a deep copy of this Gamesample object with the first condition removed.

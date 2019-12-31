@@ -33,3 +33,7 @@ class ANDCondition(Condition):
         from src.Conditions.Abstract.ORCondition import ORCondition
         opposite_conditions = [condition.opposite() for condition in self.conditions]
         return ORCondition(opposite_conditions)
+
+    def decompose(self) -> List[Condition]:
+        """ Decompose this AND Condition in a list of all its included conditions. """
+        return self.conditions
