@@ -12,3 +12,5 @@ TownOfSalemCalculator/build/
 /src/Conditions/Concrete/__pycache__/*
 /src/Conditions/Concrete/Investigator/__pycache__/*
 /src/Conditions/Concrete/RoleKnown/__pycache__/*
+/src/Conditions/Concrete/Effects/__pycache__/*
+/src/Conditions/Concrete/KillTypes/__pycache__/*

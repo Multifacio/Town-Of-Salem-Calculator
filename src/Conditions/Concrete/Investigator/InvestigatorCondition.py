@@ -1,12 +1,10 @@
-from src.Concepts.Rolegroup import Rolegroup as RG
 from src.Concepts.Role import Role
+from src.Concepts.Rolegroup import Rolegroup as RG
 from src.Conditions.Abstract.ORCondition import ORCondition
 from src.Conditions.Abstract.AtLeastCondition import AtLeastCondition
 from src.Conditions.Abstract.ANDCondition import ANDCondition
-from typing import FrozenSet
-
 from src.Conditions.Abstract.PlayerIsRoleCondition import PlayerIsRoleCondition
-
+from typing import FrozenSet
 
 class InvestigatorCondition(ANDCondition):
     """ The Investigator condition is used in the general cases when you retrieve information from some person as
