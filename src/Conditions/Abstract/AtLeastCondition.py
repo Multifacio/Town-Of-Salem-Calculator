@@ -45,7 +45,7 @@ class AtLeastCondition(Condition):
                 options_sum += 1
 
         opposite_roles = RG.NC_ALL.difference(self.roles)
-        return self.__all_combination(state, options, opposite_roles, [], options_sum)
+        return self.__all_combination(state, options, opposite_roles, [], 0, options_sum, len(options))
 
     def opposite(self) -> Condition:
         from src.Conditions.Abstract.AtMostCondition import AtMostCondition
@@ -55,14 +55,13 @@ class AtLeastCondition(Condition):
         return 40.0 + 1.0 / ((len(RG.NC_ALL.difference(self.roles)) + 1) * (self.amount + 1))
 
     def __all_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
-                          cur_comb: List[int], options_sum: int) -> List[Gamestate]:
+                          cur_comb: List[int], index: int, options_sum: int, option_size: int) -> List[Gamestate]:
         """ Determine all possible combinations for the given list of options (contains all possible category and player
         roles that can be filled in). """
         if options_sum < self.amount:
             return []
         else:
-            index = len(cur_comb)
-            if index == len(options):
+            if index == option_size:
                 new_state = self.__state_combination(state, options, opposite_roles, cur_comb)
                 if new_state is None:
                     return []
@@ -72,8 +71,8 @@ class AtLeastCondition(Condition):
                 new_states = []
                 max = options[index].multiplier
                 for i in range(max + 1):
-                    new_states += self.__all_combination(state, options, opposite_roles, cur_comb + [i],
-                                                         options_sum + i - max)
+                    new_states += self.__all_combination(state, options, opposite_roles, cur_comb + [i], index + 1,
+                                                         options_sum + i - max, option_size)
                 return new_states
 
     def __state_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
