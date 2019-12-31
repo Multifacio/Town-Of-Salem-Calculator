@@ -52,7 +52,7 @@ class AtLeastCondition(Condition):
         return AtMostCondition(self.roles, self.amount - 1)
 
     def priority(self) -> float:
-        return 40.0 + 1.0 / ((len(RG.NC_ALL.difference(self.roles)) + 1) * (self.amount + 1))
+        return 40.0 + 1.0 / ((len(RG.NC_ALL.difference(self.roles)) ** 2 + 1) * (self.amount + 1))
 
     def __all_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
                           cur_comb: List[int], index: int, options_sum: int, option_size: int) -> List[Gamestate]:
