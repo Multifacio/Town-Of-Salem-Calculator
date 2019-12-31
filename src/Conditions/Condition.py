@@ -43,3 +43,12 @@ class Condition:
             The opposite condition of this condition.
         """
         pass
+
+    def priority(self) -> float:
+        """ The priority of this condition. Conditions with higher priority values are branched first. This function
+        is only used to improve the performance of the combination count.
+
+        Returns:
+            The priority value (float) of this condition.
+        """
+        pass

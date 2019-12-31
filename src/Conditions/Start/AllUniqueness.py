@@ -6,4 +6,4 @@ class AllUniqueness(ANDCondition):
     """ The All Uniqueness Condition enforces that all unique roles should occur at most once. """
 
     def __init__(self):
-        super().__init__([AtMostCondition({role}, 1) for role in RG.NC_UNIQUE])
+        super().__init__([AtMostCondition(frozenset({role}), 1) for role in RG.NC_UNIQUE])

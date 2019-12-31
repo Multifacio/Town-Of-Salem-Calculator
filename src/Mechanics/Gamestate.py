@@ -62,7 +62,7 @@ class Gamestate:
                 decompose_queue.extend(condition.decompose())
             else:
                 conditions.append(condition)
-        print(conditions)
+        conditions.sort(reverse = True, key = lambda c: c.priority())
         return conditions
 
     def copy(self) -> Gamestate:

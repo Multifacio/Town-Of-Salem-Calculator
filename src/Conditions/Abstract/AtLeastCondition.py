@@ -4,7 +4,6 @@ from src.Concepts.Rolegroup import Rolegroup as RG
 from src.Conditions.Condition import Condition
 from typing import Set, List, TYPE_CHECKING, Union, NamedTuple, FrozenSet
 import math
-
 if TYPE_CHECKING:
     from src.Mechanics.Gamestate import Gamestate
     from src.Concepts.Role import Role
@@ -51,6 +50,9 @@ class AtLeastCondition(Condition):
     def opposite(self) -> Condition:
         from src.Conditions.Abstract.AtMostCondition import AtMostCondition
         return AtMostCondition(self.roles, self.amount - 1)
+
+    def priority(self) -> float:
+        return 40.0 + 1.0 / ((len(RG.NC_ALL.difference(self.roles)) + 1) * (self.amount + 1))
 
     def __all_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
                           cur_comb: List[int], options_sum: int) -> List[Gamestate]:

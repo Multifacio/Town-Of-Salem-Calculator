@@ -44,6 +44,9 @@ class PlayerIsRoleCondition(Condition):
         opposite_roles = RG.NC_ALL.difference(self.roles)
         return PlayerIsRoleCondition(self.player_id, opposite_roles)
 
+    def priority(self) -> float:
+        return 60.0 + 1.0 / (len(RG.NC_ALL.difference(self.roles)) + 1)
+
     def __category_fill_evidence(self, state: Gamestate) -> List[Gamestate]:
         """ Fill in the possible roles of the player if there is no information about the role of the player. Hence we
         will select a category that should belong to this player. """

@@ -6,4 +6,4 @@ class VampireLimit(AtMostCondition):
     Reference: https://town-of-salem.fandom.com/wiki/Game_Modes#All_Any (under the All Any section) """
 
     def __init__(self):
-        super().__init__({Role.VAMPIRE}, 4)
+        super().__init__(frozenset({Role.VAMPIRE}), 4)

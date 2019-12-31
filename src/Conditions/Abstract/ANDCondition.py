@@ -37,3 +37,6 @@ class ANDCondition(Condition):
     def decompose(self) -> List[Condition]:
         """ Decompose this AND Condition in a list of all its included conditions. """
         return self.conditions
+
+    def priority(self) -> float:
+        return 100.0

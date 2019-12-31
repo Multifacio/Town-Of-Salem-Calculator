@@ -7,4 +7,8 @@ class VampireHunterExistence(ORCondition):
     """ Vampire Hunter Existence enforces that there can only be a Vampire Hunter if there is a Vampire. """
 
     def __init__(self):
-        super().__init__([AtMostCondition({Role.VAMPIREHUNTER}, 0), AtLeastCondition({Role.VAMPIRE}, 1)])
+        super().__init__([AtMostCondition(frozenset({Role.VAMPIREHUNTER}), 0),
+                          AtLeastCondition(frozenset({Role.VAMPIRE}), 1)])
+
+    def priority(self) -> float:
+        return 30.0

@@ -31,3 +31,6 @@ class InvestigatorCondition(ANDCondition):
             conditions.append(ORCondition([AtLeastCondition(frozenset({Role.TRANSPORTER}), 1),
                                            PlayerIsRoleCondition(player_id, roles)]))
         super().__init__(conditions)
+
+    def priority(self) -> float:
+        return 5.0

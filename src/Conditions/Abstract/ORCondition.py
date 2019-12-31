@@ -41,3 +41,9 @@ class ORCondition(Condition):
         from src.Conditions.Abstract.ANDCondition import ANDCondition
         opposite_conditions = [condition.opposite() for condition in self.conditions]
         return ANDCondition(opposite_conditions)
+
+    def priority(self) -> float:
+        if len(self.conditions) > 1:
+            return 20.0 / len(self.conditions)
+        else:
+            return 100.0

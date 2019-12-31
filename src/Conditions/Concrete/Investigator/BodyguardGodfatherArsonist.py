@@ -11,3 +11,6 @@ class BodyguardGodfatherArsonist(ORCondition):
     def __init__(self, player_id: int, witched: bool = False, amnesiacRemembered: FrozenSet[Role] = None):
         super().__init__([AtLeastCondition(frozenset({Role.ARSONIST}), 1), InvestigatorCondition(player_id,
                 frozenset({Role.BODYGUARD, Role.GODFATHER, Role.ARSONIST}), witched, amnesiacRemembered)])
+
+    def priority(self) -> float:
+        return 10.0
