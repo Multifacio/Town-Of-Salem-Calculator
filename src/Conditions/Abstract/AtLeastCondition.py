@@ -2,7 +2,7 @@ from __future__ import annotations
 from src.Concepts.Role import Role
 from src.Concepts.Rolegroup import Rolegroup as RG
 from src.Conditions.Condition import Condition
-from typing import Set, List, TYPE_CHECKING, Union, NamedTuple, FrozenSet
+from typing import List, TYPE_CHECKING, Union, NamedTuple, FrozenSet
 import math
 if TYPE_CHECKING:
     from src.Mechanics.Gamestate import Gamestate

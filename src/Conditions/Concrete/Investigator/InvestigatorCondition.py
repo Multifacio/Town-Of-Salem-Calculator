@@ -6,6 +6,9 @@ from src.Conditions.Abstract.ANDCondition import ANDCondition
 from src.Conditions.Abstract.PlayerIsRoleCondition import PlayerIsRoleCondition
 from typing import FrozenSet
 
+from src.Conditions.Concrete.ExistenceCondition import ExistenceCondition
+
+
 class InvestigatorCondition(ANDCondition):
     """ The Investigator condition is used in the general cases when you retrieve information from some person as
     Investigator. Do not use this condition directly, but use the specific Investigator conditions instead. """
@@ -26,7 +29,7 @@ class InvestigatorCondition(ANDCondition):
         roles = RG.full_include(roles, amnesiacRemembered)
         conditions = [AtLeastCondition(roles, 1)]
         if not witched:
-            conditions.append(ORCondition([AtLeastCondition(frozenset({Role.TRANSPORTER}), 1),
+            conditions.append(ORCondition([ExistenceCondition(frozenset({Role.TRANSPORTER}), amnesiacRemembered),
                                            PlayerIsRoleCondition(player_id, roles)]))
         super().__init__(conditions)
 

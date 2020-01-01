@@ -69,24 +69,3 @@ class Rolegroup:
     # All roles that should be killed before town wins
     NC_TOWN_HOSTILE = frozenset.union(NC_MAFIA, NC_NEUTRAL_KILLING, {Role.WITCH})
     NC_TOWN_NON_HOSTILE = NC_ALL.difference(NC_TOWN_HOSTILE) # All roles that do not need to be killed to have town win
-
-    # Condition Rolegroups (Rolegroups which are given by a condition)
-    # All Unique Roles in Town of Salem
-    NC_UNIQUE = frozenset({Role.JAILOR, Role.VETERAN, Role.MAYOR, Role.RETRIBUTIONIST, Role.GODFATHER, Role.MAFIOSO,
-                           Role.WEREWOLF})
-    NC_IN_JAIL_GROUP = NC_ALL.difference({Role.JAILOR}) # All roles that can be jailed
-    # All roles that can be roleblocked without resulting in a kill of the roleblocker
-    NC_SUCCESSFUL_ROLEBLOCK = NC_ALL.difference({Role.SERIALKILLER})
-    # All roles with basic defense
-    NC_BASIC_DEFENSE = frozenset({Role.BODYGUARD, Role.GODFATHER, Role.SURVIVOR, Role.EXECUTIONER, Role.WITCH,
-                                  Role.ARSONIST, Role.SERIALKILLER, Role.WEREWOLF})
-    # All roles that can visit someone else excluding the situation where players are controlled by a witch.
-    NC_OTHER_VISIT = frozenset({Role.INVESTIGATOR, Role.LOOKOUT, Role.SHERIFF, Role.SPY, Role.VAMPIREHUNTER,
-                                Role.VIGILANTE, Role.BODYGUARD, Role.DOCTOR, Role.ESCORT, Role.TRANSPORTER,
-                                Role.DISGUISER, Role.FORGER, Role.FRAMER, Role.JANITOR, Role.GODFATHER, Role.MAFIOSO,
-                                Role.BLACKMAILER, Role.CONSIGLIERE, Role.CONSORT, Role.WITCH, Role.VAMPIRE,
-                                Role.ARSONIST, Role.SERIALKILLER, Role.WEREWOLF})
-
-    # All roles that can visit themselves without killing the lookout that watches them and excluding the situation where
-    # players are controlled by a witch or redirected by a transporter.
-    NC_SELF_VISIT_WITHOUT_KILL = frozenset({Role.BODYGUARD, Role.DOCTOR, Role.TRANSPORTER, Role.SURVIVOR, Role.ARSONIST})

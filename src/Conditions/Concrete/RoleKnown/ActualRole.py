@@ -14,7 +14,9 @@ class ActualRole(PlayerIsRoleCondition):
     also Mafia), because he died of guilt (Vigilante) or guarding someone (Bodyguard). Or because he died by a Veteran
     and was not a Veteran himself.
     - If a person died and he obviously is the Disguiser, e.g. a Veteran died because he visited a Veteran or a person
-    with basic defense being killed by someone with basic attack (SerialKiller being killed by Vigilante/SerialKiller).
+    with basic defense being killed by someone with basic attack (SerialKiller being killed by Vigilante/Serial Killer).
+    - If you roleblocked/jailed a Serial Killer and he killed you, i.e. you received the message:
+    'You were murdered by the Serial Killer you visited!' or 'You were killed by the Serial Killer you jailed!'
 
     Do not use this condition for regular deaths or situations where it is still possible that the player is a
     Disguiser. Also be careful when using this condition as evidence in case of claims even if the person looks very
