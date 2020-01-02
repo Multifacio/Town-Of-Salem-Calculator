@@ -30,11 +30,11 @@ class Gamestate:
         self.multiplier = multiplier
 
     @staticmethod
-    def create(game_modus: List[Set[Role]], condition: Condition) -> Gamestate:
+    def create(game_modus: List[FrozenSet[Role]], condition: Condition) -> Gamestate:
         """ Create a new fresh Gamestate based on a given Gamemodus with a condition that should hold on this Gamestate.
 
         Arguments:
-            game_modus (List[Set[Role]]): The list with set of roles from which the player roles are being sampled.
+            game_modus (List[FrozenSet[Role]]): The list with set of roles from which the player roles are being sampled.
             condition (Condition): The condition that should hold on this Gamestate.
 
         Returns:

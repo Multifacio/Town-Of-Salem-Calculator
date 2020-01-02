@@ -1,9 +1,8 @@
 from typing import FrozenSet
 from src.Concepts.Role import Role
-from src.Conditions.Abstract.PlayerIsRoleCondition import PlayerIsRoleCondition
-from src.Concepts.Rolegroup import Rolegroup as RG
+from src.Conditions.Concrete.ActualRoleGroup import ActualRoleGroup
 
-class ActualRole(PlayerIsRoleCondition):
+class ActualRole(ActualRoleGroup):
     """ The Actual Role condition is used when you know someones actual role (which is not starting role). Examples
     when you can use this condition are:
     - Checking if claims made by players are either True or False.
@@ -30,6 +29,4 @@ class ActualRole(PlayerIsRoleCondition):
             role (Role): The actual role of this player.
             amnesiacRemembered (Set[Role]): All the roles remembered by an Amnesiac.
         """
-        if amnesiacRemembered is None:
-            amnesiacRemembered = frozenset()
-        super().__init__(player_id, RG.become_include(frozenset({role}), amnesiacRemembered))
+        super().__init__(player_id, frozenset({role}), amnesiacRemembered)

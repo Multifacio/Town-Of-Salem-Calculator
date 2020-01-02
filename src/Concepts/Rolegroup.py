@@ -65,7 +65,3 @@ class Rolegroup:
                      Role.VIGILANTE: frozenset({Role.VAMPIREHUNTER}),
                      Role.JESTER: frozenset({Role.EXECUTIONER})}
 
-    # Prediction Rolegroups (we want to determine if a player is part of these groups)
-    # All roles that should be killed before town wins
-    NC_TOWN_HOSTILE = frozenset.union(NC_MAFIA, NC_NEUTRAL_KILLING, {Role.WITCH})
-    NC_TOWN_NON_HOSTILE = NC_ALL.difference(NC_TOWN_HOSTILE) # All roles that do not need to be killed to have town win

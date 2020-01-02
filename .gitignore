@@ -16,3 +16,4 @@ TownOfSalemCalculator/build/
 /src/Conditions/Concrete/KillTypes/__pycache__/*
 /src/Conditions/Concrete/Lookout/__pycache__/*
 /src/Conditions/Concrete/Others/__pycache__/*
+/src/Conditions/Concrete/Sheriff/__pycache__/*
