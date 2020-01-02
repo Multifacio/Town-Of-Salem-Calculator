@@ -2,7 +2,7 @@ from __future__ import annotations
 from src.Concepts.Role import Role
 from src.Concepts.Rolegroup import Rolegroup as RG
 from src.Conditions.Condition import Condition
-from typing import List, TYPE_CHECKING, Union, NamedTuple, FrozenSet
+from typing import List, TYPE_CHECKING, Union, NamedTuple, FrozenSet, Tuple
 import math
 if TYPE_CHECKING:
     from src.Mechanics.Gamestate import Gamestate
@@ -45,7 +45,9 @@ class AtLeastCondition(Condition):
                 options_sum += 1
 
         opposite_roles = RG.NC_ALL.difference(self.roles)
-        return self.__all_combination(state, options, opposite_roles, [], 0, options_sum, len(options))
+        result = []
+        self.__all_combination(state, options, opposite_roles, (), 0, options_sum, len(options), result)
+        return result
 
     def opposite(self) -> Condition:
         from src.Conditions.Abstract.AtMostCondition import AtMostCondition
@@ -55,41 +57,50 @@ class AtLeastCondition(Condition):
         return 40.0 + 1.0 / ((len(RG.NC_ALL.difference(self.roles)) ** 2 + 1) * (self.amount + 1))
 
     def __all_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
-                          cur_comb: List[int], index: int, options_sum: int, option_size: int) -> List[Gamestate]:
+                        cur_comb: Tuple[int, ...], index: int, options_sum: int, option_size: int, result: List[Gamestate]):
         """ Determine all possible combinations for the given list of options (contains all possible category and player
         roles that can be filled in). """
-        if options_sum < self.amount:
-            return []
-        else:
+        if options_sum >= self.amount:
             if index == option_size:
-                new_state = self.__state_combination(state, options, opposite_roles, cur_comb)
-                if new_state is None:
-                    return []
-                else:
-                    return [new_state]
+                if self.__valid__combination(state, options, opposite_roles, cur_comb):
+                    new_state = self.__state_combination(state, options, opposite_roles, cur_comb)
+                    result.append(new_state)
             else:
-                new_states = []
                 max = options[index].multiplier
                 for i in range(max + 1):
-                    new_states += self.__all_combination(state, options, opposite_roles, cur_comb + [i], index + 1,
-                                                         options_sum + i - max, option_size)
-                return new_states
+                    self.__all_combination(state, options, opposite_roles, cur_comb + (i,), index + 1,
+                                           options_sum + i - max, option_size, result)
+
+    def __valid__combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
+                            combination: Tuple[int, ...]) -> bool:
+        """ Check if the corresponding state for a given combination is valid where the combination indicates which
+        options should be selected. """
+        for num, option in zip(combination, options):
+            if option.isPlayerRole:
+                i = option.index
+                if state.playerRoles[i].isdisjoint(self.roles if num == 1 else opposite_roles):
+                    return False
+            else:
+                _, cr, max = option
+                if num > 0 and cr.isdisjoint(self.roles):
+                    return False
+
+                num = max - num
+                if num > 0 and cr.isdisjoint(opposite_roles):
+                    return False
+
+        return True
 
     def __state_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
-                            combination: List[int]) -> Union[Gamestate, None]:
+                            combination: Tuple[int, ...]) -> Gamestate:
         """ Compute the corresponding state for a given combination where the combination indicates which options
         should be selected. Returns None if the combination is not valid. """
         new_state = state.copy()
-        multiplier = 1
         for num, option in zip(combination, options):
-            multiplier *= self.__nCr(option.multiplier, num)
+            new_state.multiplier *= self.__nCr(option.multiplier, num)
             if option.isPlayerRole:
                 i = option.index
-                new_roles = new_state.playerRoles[i].intersection(self.roles if num == 1 else opposite_roles)
-                if new_roles:
-                    new_state.playerRoles[i] = new_roles
-                else:
-                    return None
+                new_state.playerRoles[i] = new_state.playerRoles[i].intersection(self.roles if num == 1 else opposite_roles)
             else:
                 _, cr, max = option
                 new_occ = new_state.categoryRoles[cr] - max
@@ -100,20 +111,13 @@ class AtLeastCondition(Condition):
 
                 if num > 0:
                     nr = cr.intersection(self.roles)
-                    if nr:
-                        new_state.categoryRoles[nr] = new_state.categoryRoles.get(nr, 0) + num
-                    else:
-                        return None
+                    new_state.categoryRoles[nr] = new_state.categoryRoles.get(nr, 0) + num
 
                 num = max - num
                 if num > 0:
                     nor = cr.intersection(opposite_roles)
-                    if nor:
-                        new_state.categoryRoles[nor] = new_state.categoryRoles.get(nor, 0) + num
-                    else:
-                        return None
+                    new_state.categoryRoles[nor] = new_state.categoryRoles.get(nor, 0) + num
 
-        new_state.multiplier *= multiplier
         return new_state
 
     def __valid_count(self, state: Gamestate) -> int:
