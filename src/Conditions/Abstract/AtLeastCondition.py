@@ -46,7 +46,7 @@ class AtLeastCondition(Condition):
 
         opposite_roles = RG.NC_ALL.difference(self.roles)
         result = []
-        self.__all_combination(state, options, opposite_roles, (), 0, options_sum, len(options), result)
+        self.__all_combination(state, options, opposite_roles, (), 0, options_sum, len(options), -1, result)
         return result
 
     def opposite(self) -> Condition:
@@ -57,25 +57,29 @@ class AtLeastCondition(Condition):
         return 40.0 + 1.0 / ((len(RG.NC_ALL.difference(self.roles)) ** 2 + 1) * (self.amount + 1))
 
     def __all_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
-                        cur_comb: Tuple[int, ...], index: int, options_sum: int, option_size: int, result: List[Gamestate]):
+                            cur_comb: Tuple[int, ...], index: int, options_sum: int, option_size: int,
+                            last_non_zero_index: int, result: List[Gamestate]):
         """ Determine all possible combinations for the given list of options (contains all possible category and player
         roles that can be filled in). """
         if options_sum >= self.amount:
             if index == option_size:
-                if self.__valid__combination(state, options, opposite_roles, cur_comb):
-                    new_state = self.__state_combination(state, options, opposite_roles, cur_comb)
+                if self.__valid__combination(state, options, opposite_roles, cur_comb, options_sum, last_non_zero_index):
+                    new_state = self.__state_combination(state, options, opposite_roles, cur_comb, last_non_zero_index)
                     result.append(new_state)
             else:
                 max = options[index].multiplier
                 for i in range(max + 1):
                     self.__all_combination(state, options, opposite_roles, cur_comb + (i,), index + 1,
-                                           options_sum + i - max, option_size, result)
+                                options_sum + i - max, option_size, last_non_zero_index if i == 0 else  index,result)
 
     def __valid__combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
-                            combination: Tuple[int, ...]) -> bool:
+                            combination: Tuple[int, ...], options_sum: int, last_non_zero_index: int) -> bool:
         """ Check if the corresponding state for a given combination is valid where the combination indicates which
         options should be selected. """
-        for num, option in zip(combination, options):
+        if options_sum != self.amount:
+            return False
+
+        for num, option in zip(combination, options[:(last_non_zero_index + 1)]):
             if option.isPlayerRole:
                 i = option.index
                 if state.playerRoles[i].isdisjoint(self.roles if num == 1 else opposite_roles):
@@ -92,11 +96,11 @@ class AtLeastCondition(Condition):
         return True
 
     def __state_combination(self, state: Gamestate, options: List[AtLeastSelector], opposite_roles: FrozenSet[Role],
-                            combination: Tuple[int, ...]) -> Gamestate:
+                            combination: Tuple[int, ...], last_non_zero_index: int) -> Gamestate:
         """ Compute the corresponding state for a given combination where the combination indicates which options
         should be selected. Returns None if the combination is not valid. """
         new_state = state.copy()
-        for num, option in zip(combination, options):
+        for num, option in zip(combination, options[:(last_non_zero_index + 1)]):
             new_state.multiplier *= self.__nCr(option.multiplier, num)
             if option.isPlayerRole:
                 i = option.index

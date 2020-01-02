@@ -29,12 +29,12 @@ class ORCondition(Condition):
             return [state.copy()]
 
         new_states = []
-        for bool_sample in it.product([False, True], repeat = len(self.conditions)):
-            if any(bool_sample):
-                condition_sample = [cond if b else cond.opposite() for b, cond in zip(bool_sample, self.conditions)]
-                new_state = state.copy()
-                new_state.conditions.insert(0, ANDCondition(condition_sample))
-                new_states.append(new_state)
+        for first_true in range(len(self.conditions)):
+            condition_sample = [cond.opposite() for cond in self.conditions[:first_true]]
+            condition_sample.append(self.conditions[first_true])
+            new_state = state.copy()
+            new_state.conditions.insert(0, ANDCondition(condition_sample))
+            new_states.append(new_state)
         return new_states
 
     def opposite(self) -> Condition:

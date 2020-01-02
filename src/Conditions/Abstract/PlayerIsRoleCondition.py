@@ -70,6 +70,7 @@ class PlayerIsRoleCondition(Condition):
         new_state = state.copy()
         new_roles = new_state.playerRoles[self.player_id].intersection(self.roles)
         if new_roles:
+            new_state.playerRoles[self.player_id] = new_roles
             return [new_state]
         else:
             return []
