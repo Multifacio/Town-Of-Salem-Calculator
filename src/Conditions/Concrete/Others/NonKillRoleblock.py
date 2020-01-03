@@ -6,9 +6,9 @@ from src.Conditions.Concrete.ExistenceCondition import ExistenceCondition
 from typing import FrozenSet
 
 class NonKillRoleblock(ORCondition):
-    """ The Non Kill Roleblock condition is used when you jail (as Jailor) or roleblock (as Escort or Consort) a
-    player and that player does not kill you (so you were not killed by a Werewolf or Serial Killer). This condition
-    cannot be used if you are witched."""
+    """ The Non Kill Roleblock condition is used when you jail and not execute (as Jailor) or roleblock (as Escort or
+    Consort) a player and that player does not kill you (so you were not killed by a Werewolf or Serial Killer). This
+    condition cannot be used if you are witched as Escort or Consort (but can be used if you are witched as Jailor). """
 
     def __init__(self, player_id: int, full_moon: bool, amnesiacRemembered: FrozenSet[Role] = None):
         """ Constructor of the Non Kill Roleblock condition.

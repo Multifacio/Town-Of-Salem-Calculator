@@ -1,0 +1,141 @@
+After Night 1
+==========================
+Ramba claims Spy: 0.03902347273041642
+Harold Pooter claims Sheriff: 0.03902347273041642
+Harold Pooter is Executioner: 0.02564102564102564
+Red claims Sheriff: 0.03902347273041642
+Geostigmaa claims Sheriff: 0.03902347273041642
+Vsus claims Escort: 0.022482043805171197
+Vsus is Mafia: 0.2928662775573656
+3 Sheriff Claims: 1.906392010273913e-05
+3 Sheriff + Spy Claim: 1.593085245354245e-07
+Thomas Danforth is Hostile: 0.39543038012146814
+Ramba is Hostile: 0.39543038012146814
+Zero is Hostile: 0.39543038012146814
+Harold Pooter is Hostile: 0.39543038012146814
+A Lesbian is Hostile: 0.39543038012146814
+succ is Hostile: 0.39543038012146814
+red is Hostile: 0.39543038012146814
+Geostigmaa is Hostile: 0.39543038012146814
+mayonnaise is Hostile: 0.39543038012146814
+Sean Cody is Hostile: 0.39543038012146814
+fate is Hostile: 0.39543038012146814
+Vsus is Hostile: 0.39543038012146814
+WillSuckForBuck is Hostile: 0.39543038012146814
+
+
+After Night 2
+==========================
+Ramba claims Spy: 0.03902347273041642
+Harold Pooter claims Sheriff: 0.03902347273041642
+Harold Pooter is Executioner: 0.02564102564102564
+Harold Pooter is Jester: 0.05128205128205128
+Red claims Sheriff: 0.03902347273041642
+Red is Jester: 0.05128205128205128
+Geostigmaa claims Sheriff: 0.03902347273041642
+Vsus claims Escort: 0.022482043805171197
+Vsus is Mafia: 0.2928662775573656
+3 Sheriff Claims: 1.906392010273913e-05
+3 Sheriff + Spy Claim: 1.593085245354245e-07
+Thomas Danforth is Hostile: 0.39543038012146814
+Ramba is Hostile: 0.39543038012146814
+Zero is Hostile: 0.39543038012146814
+Harold Pooter is Hostile: 0.39543038012146814
+A Lesbian is Hostile: 0.39543038012146814
+succ is Hostile: 0.39543038012146814
+red is Hostile: 0.39543038012146814
+Geostigmaa is Hostile: 0.39543038012146814
+mayonnaise is Hostile: 0.39543038012146814
+Sean Cody is Hostile: 0.39543038012146814
+fate is Hostile: 0.39543038012146814
+Vsus is Hostile: 0.39543038012146814
+WillSuckForBuck is Hostile: 0.39543038012146814
+
+
+After Night 3
+==========================
+Ramba claims Spy: 0.030619971605241696
+Harold Pooter claims Sheriff: 0.027827048833030804
+Harold Pooter is Executioner: 0.027285945731314896
+Harold Pooter is Jester: 0.05457189146262979
+Red claims Sheriff: 0.033605103231064345
+Red is Jester: 0.06476607618116592
+Vsus claims Escort: 0.020563305884991945
+Vsus is Mafia: 0.2669357011650419
+3 Sheriff Claims: 0.0006134747347855259
+3 Sheriff + Spy Claim: 6.021004753386304e-06
+Thomas Danforth is Hostile: 0.3986701715354243
+Ramba is Hostile: 0.2877047837970673
+Zero is Hostile: 0.3986701715354243
+Harold Pooter is Hostile: 0.3986701715354243
+A Lesbian is Hostile: 0.3986701715354243
+succ is Hostile: 0.456890571952498
+red is Hostile: 0.28614071808378394
+mayonnaise is Hostile: 0.3986701715354243
+Sean Cody is Hostile: 0.3986701715354243
+fate is Hostile: 0.3986701715354243
+Vsus is Hostile: 0.3986701715354243
+
+
+After Night 4
+==========================
+Ramba claims Spy: 0.04028882312348982
+Harold Pooter claims Sheriff: 0.034914925373789804
+Harold Pooter is Executioner: 0.03707800923740992
+Harold Pooter is Jester: 0.07415601847481984
+Red claims Sheriff: 0.038609067528028465
+Red is Jester: 0.08135926178895095
+Vsus claims Escort: 0.024946633167119
+Vsus is Mafia: 0.21964731400249973
+3 Sheriff Claims: 0.0009028626288369709
+3 Sheriff + Spy Claim: 1.3225439978166985e-05
+Zero claims Lookout to Jailor: 0.034914925373789804
+3 Sheriff + Spy + Lookout Claim : 0.0
+Thomas Danforth is Hostile: 0.4148288292720722
+Ramba is Hostile: 0.27790771676732623
+Zero is Hostile: 0.3658534886104184
+Harold Pooter is Hostile: 0.3658534886104184
+A Lesbian is Hostile: 0.3872205118273665
+red is Hostile: 0.3057461096339379
+mayonnaise is Hostile: 0.38734297239611454
+fate is Hostile: 0.3872205118273665
+Vsus is Hostile: 0.3872205118273665
+
+
+After Night 5
+==========================
+Ramba claims Spy: 0.029932707856597775
+Red claims Sheriff: 0.02795299782842675
+Red is Jester: 0.10620479857111007
+3 Sheriff Claims: 0.02795299782842675
+3 Sheriff + Spy Claim: 0.000455948618338886
+Zero claims Lookout to Jailor: 0.023980440716275933
+3 Sheriff + Spy + Lookout Claim : 0.0
+Mayonaise claims Bodyguard: 0.11920081553914644
+Thomas Danforth claims Town Killing: 0.14902222743979127
+A Lesbian claims Veteran: 0.07466648101877045
+Thomas Danforth is Hostile: 0.3905326120372744
+Ramba is Hostile: 0.2137013988439296
+Zero is Hostile: 0.3493778905575392
+A Lesbian is Hostile: 0.380050185134697
+red is Hostile: 0.25963988008862365
+mayonnaise is Hostile: 0.4278391566997031
+fate is Hostile: 0.25963988008862365
+
+
+After Night 6
+==========================
+Ramba claims Spy: 0.0348391011797462
+Red claims Sheriff: 0.032014033548952964
+Red is Jester: 0.13786737990275444
+3 Sheriff Claims: 0.032014033548952964
+3 Sheriff + Spy Claim: 0.0006629220072258498
+Zero claims Lookout to Jailor: 0.032014033548952964
+3 Sheriff + Spy + Lookout Claim : 0.0
+Mayonaise claims Bodyguard: 0.05507352060030137
+Thomas Danforth claims Town Killing: 0.19826977356114053
+Thomas Danforth is Hostile: 0.4275464491602563
+Ramba is Hostile: 0.1940602188152564
+Zero is Hostile: 0.2564539281953478
+red is Hostile: 0.2564539281953478
+mayonnaise is Hostile: 0.31036988498303175
