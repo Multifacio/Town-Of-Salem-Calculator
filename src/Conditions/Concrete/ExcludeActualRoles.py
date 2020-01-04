@@ -3,13 +3,13 @@ from src.Concepts.Rolegroup import Rolegroup as RG
 from src.Conditions.Abstract.PlayerIsRoleCondition import PlayerIsRoleCondition
 from typing import FrozenSet
 
-class ExcludeActualRole(PlayerIsRoleCondition):
-    """ Use the Exclude Actual Role condition when a players actual role cannot be some given roles. Do not create
-    separate Exclude Actual Role conditions for the same player, but combine all excluded roles into 1 Exclude Actual
-    Role condition for that player (this has to do with differences between the starting and actual role). """
+class ExcludeActualRoles(PlayerIsRoleCondition):
+    """ Use the Exclude Actual Roles condition when a players actual role cannot be some given roles. Do not create
+    separate Exclude Actual Roles conditions for the same player, but combine all excluded roles into 1 Exclude Actual
+    Roles condition for that player (this has to do with differences between the starting and actual role). """
 
     def __init__(self, player_id: int, excluded_roles: FrozenSet[Role], amnesiacRemembered: FrozenSet[Role] = None):
-        """ The constructor of the Exclude Actual Role condition.
+        """ The constructor of the Exclude Actual Roles condition.
 
         Arguments:
             player_id (int): The id of the player of which we know that it cannot have some given actual roles.
