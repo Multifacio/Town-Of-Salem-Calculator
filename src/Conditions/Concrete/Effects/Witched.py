@@ -7,4 +7,4 @@ class Witched(ExistenceCondition):
     message: 'You feel a mystical power dominating you. You were controlled by a Witch!' """
 
     def __init__(self, amnesiacRemembered: FrozenSet[Role] = None):
-        super().__init__(frozenset({Role.TRANSPORTER}), amnesiacRemembered)
+        super().__init__(frozenset({Role.WITCH}), amnesiacRemembered)

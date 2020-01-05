@@ -1,0 +1,57 @@
+After Night 1
+==========================
+He claims Bodyguard: 0.022553230988196102
+Town claims Doctor: 0.025264844256278823
+John Willard is Disguiser: 0.3360733089588952
+Rachel claims Bodyguard: 0.022553230988196102
+Town is Serial Killer: 0.10638319206587402
+Afk if Town is Executioner: 0.0
+noot claims Lookout: 0.04508576318520161
+2 Bodyguard claims: 0.0003050385871305946
+2 Bodyguard + Doctor claim: 3.6118009343943884e-06
+Crops is Hostile: 0.5149323514800853
+Teddie is Hostile: 0.5149323514800853
+Afk if Town is Hostile: 0.5724408988632711
+Rachel is Hostile: 0.5149323514800853
+LanaDelRay is Hostile: 0.5149323514800853
+noot is Hostile: 0.5149323514800853
+Afk is Hostile: 0.5149323514800853
+Ocean Man is Hostile: 0.5149323514800853
+Town is Hostile: 0.5149323514800853
+He is Hostile: 0.5149323514800853
+
+
+After Night 2
+==========================
+He claims Bodyguard: 0.021182266009852218
+Town claims Doctor: 0.013300492610837438
+John Willard is Disguiser: 0.4189655172413793
+Town is Serial Killer: 0.14285714285714285
+noot claims Lookout: 0.049507389162561574
+2 Bodyguard + Doctor claim: 8.210180623973728e-05
+Crops is Hostile: 0.638423645320197
+LanaDelRay is Hostile: 0.638423645320197
+noot is Hostile: 0.638423645320197
+Afk is Hostile: 0.638423645320197
+Ocean Man is Hostile: 0.638423645320197
+Town is Hostile: 0.638423645320197
+He is Hostile: 0.638423645320197
+
+
+After Night 3
+==========================
+John Willard is Disguiser: 0.39823008849557523
+noot claims Lookout: 0.09218289085545722
+Afk claims Retributionist: 0.017699115044247787
+LanaDelRay is Hostile: 0.8584070796460177
+noot is Hostile: 0.4365781710914454
+Afk is Hostile: 0.4365781710914454
+Ocean Man is Hostile: 0.4365781710914454
+
+
+After Night 4
+==========================
+John Willard is Disguiser: 0.0
+noot claims Lookout: 0.25
+LanaDelRay is Hostile: 1.0
+noot is Hostile: 0.0
