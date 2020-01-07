@@ -7,7 +7,8 @@ from typing import FrozenSet
 
 class MafiaVisit(ORCondition):
     """ The Mafia Visit condition is used when you are Spy and you see the Mafia visiting a player (this condition
-    should be used for every player that is visited by the Mafia). """
+    should be used for every player that is visited by the Mafia that you will see as Spy). You should also use this
+    condition if a player is killed by the Mafia and cleaned.  """
 
     # All roles visitable by the Mafia without help of a Transporter or Witch.
     MAFIA_VISITABLE = RG.NC_ALL.difference(RG.NC_MAFIA)
